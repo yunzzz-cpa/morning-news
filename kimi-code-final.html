@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kimi Code — 图标设计方案</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=SF+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --bg: #0c0c14;
+            --surface: #14141e;
+            --border: #262636;
+            --text: #f0f2f5;
+            --text-muted: #6b6b80;
+            --accent: #0066FF;
+        }
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        .hero {
+            text-align: center;
+            padding: 60px 20px 40px;
+        }
+        .hero h1 {
+            font-size: 32px;
+            font-weight: 700;
+            letter-spacing: -1px;
+            margin-bottom: 8px;
+        }
+        .hero p {
+            color: var(--text-muted);
+            font-size: 14px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px 60px;
+        }
+
+        .card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 40px 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        .card:hover {
+            border-color: #3a3a50;
+            transform: translateY(-2px);
+        }
+        .card-label {
+            font-size: 12px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 24px;
+            font-weight: 500;
+        }
+        .icon-wrap {
+            width: 160px;
+            height: 160px;
+            margin: 0 auto 24px;
+            position: relative;
+        }
+        .card h3 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        .card-desc {
+            font-size: 13px;
+            color: var(--text-muted);
+            line-height: 1.6;
+            max-width: 240px;
+            margin: 0 auto;
+        }
+
+        .comparison {
+            max-width: 600px;
+            margin: 0 auto 40px;
+            padding: 30px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            text-align: center;
+        }
+        .comparison h2 {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+        .compare-row {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+        }
+        .compare-item {
+            text-align: center;
+        }
+        .compare-item svg {
+            width: 100px;
+            height: 100px;
+            margin-bottom: 8px;
+        }
+        .compare-item span {
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+        .compare-arrow {
+            font-size: 24px;
+            color: var(--text-muted);
+        }
+
+        .specs {
+            max-width: 600px;
+            margin: 0 auto 60px;
+            padding: 0 20px;
+        }
+        .specs h2 {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: var(--text-muted);
+        }
+        .spec-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+            font-size: 13px;
+        }
+        .spec-row:last-child { border-bottom: none; }
+        .spec-label { color: var(--text-muted); }
+        .spec-value { color: var(--text); font-weight: 500; }
+
+        .footer-note {
+            text-align: center;
+            padding: 40px 20px;
+            color: var(--text-muted);
+            font-size: 12px;
+            border-top: 1px solid var(--border);
+        }
+    </style>
+</head>
+<body>
+
+<div class="hero">
+    <h1>Kimi Code</h1>
+    <p>在 Kimi 图标基础上融入 Code 基因 — 六款精修方案</p>
+</div>
+
+<div class="comparison">
+    <h2>原 Kimi → Kimi Code</h2>
+    <div class="compare-row">
+        <div class="compare-item">
+            <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" id="originalKimi"></svg>
+            <span>Kimi</span>
+        </div>
+        <div class="compare-arrow">→</div>
+        <div class="compare-item">
+            <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" id="kimiCode"></svg>
+            <span>Kimi Code</span>
+        </div>
+    </div>
+</div>
+
+<div class="grid">
+    <!-- 方案1：终端光标 -->
+    <div class="card">
+        <div class="card-label">方案一</div>
+        <div class="icon-wrap">
+            <svg viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg" id="design1"></svg>
+        </div>
+        <h3>终端光标</h3>
+        <p class="card-desc">K 使用等宽字体，右侧闪烁蓝色终端光标。程序员看到秒懂。</p>
+    </div>
+
+    <!-- 方案2：花括号 -->
+    <div class="card">
+        <div class="card-label">方案二</div>
+        <div class="icon-wrap">
+            <svg viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg" id="design2"></svg>
+        </div>
+        <h3>花括号</h3>
+        <p class="card-desc">K 被蓝色花括号 { } 轻柔包裹，像一段代码块。最直观的 Code 暗示。</p>
+    </div>
+
+    <!-- 方案3：代码斜杠 -->
+    <div class="card">
+        <div class="card-label">方案三</div>
+        <div class="icon-wrap">
+            <svg viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg" id="design3"></svg>
+        </div>
+        <h3>代码斜杠</h3>
+        <p class="card-desc">K 右下角融入蓝色斜杠 /，像代码注释或路径符号。极简克制。</p>
+    </div>
+
+    <!-- 方案4：尖括号 -->
+    <div class="card">
+        <div class="card-label">方案四</div>
+        <div class="icon-wrap">
+            <svg viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg" id="design4"></svg>
+        </div>
+        <h3>尖括号</h3>
+        <p class="card-desc">&lt;K&gt; 形式，像 HTML/XML 标签。Web 开发者最熟悉的符号。</p>
+    </div>
+
+    <!-- 方案5：代码下划线 -->
+    <div class="card">
+        <div class="card-label">方案五</div>
+        <div class="icon-wrap">
+            <svg viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg" id="design5"></svg>
+        </div>
+        <h3>终端 Prompt</h3>
+        <p class="card-desc">K 下方有一条蓝色细线，像终端命令行提示符。最内敛的方案。</p>
+    </div>
+
+    <!-- 方案6：KC 融合 -->
+    <div class="card">
+        <div class="card-label">方案六</div>
+        <div class="icon-wrap">
+            <svg viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg" id="design6"></svg>
+        </div>
+        <h3>KC 融合</h3>
+        <p class="card-desc">K（白）+ C（蓝）连字，C 微微倾斜像代码符号。品牌延展性最强。</p>
+    </div>
+</div>
+
+<div class="specs">
+    <h2>设计规范</h2>
+    <div class="spec-row">
+        <span class="spec-label">背景色</span>
+        <span class="spec-value">#0A0A0A（深空黑）</span>
+    </div>
+    <div class="spec-row">
+        <span class="spec-label">主色</span>
+        <span class="spec-value">#FFFFFF（纯白 K 字母）</span>
+    </div>
+    <div class="spec-row">
+        <span class="spec-label">强调色</span>
+        <span class="spec-value">#0066FF（Kimi 蓝）</span>
+    </div>
+    <div class="spec-row">
+        <span class="spec-label">星尘颗粒</span>
+        <span class="spec-value">80-120 颗，弧形分布，底部密集</span>
+    </div>
+    <div class="spec-row">
+        <span class="spec-label">圆角</span>
+        <span class="spec-value">28px（约 22% 圆角率）</span>
+    </div>
+    <div class="spec-row">
+        <span class="spec-label">蓝色星球</span>
+        <span class="spec-value">右上角，直径 10px，#0066FF</span>
+    </div>
+</div>
+
+<div class="footer-note">
+    所有图标均为 SVG 矢量格式，可无限放大 · 颜色、尺寸均可精确调整
+</div>
+
+<script>
+// ========================
+// 通用：生成 Kimi 风格的星尘颗粒
+// ========================
+function generateStardust(svg, cx, cy, count, spreadX, spreadY) {
+    const group = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+    for (let i = 0; i < count; i++) {
+        // 弧形分布：底部中间密集，向两侧渐散
+        const angle = Math.PI + (Math.random() - 0.5) * Math.PI * 0.8;
+        const radius = 25 + Math.random() * 55;
+        const x = cx + Math.cos(angle) * radius * (0.5 + Math.random() * 0.5);
+        const y = cy + Math.sin(angle) * radius * 0.6;
+        
+        const size = 0.4 + Math.random() * 2.2;
+        const opacity = 0.15 + Math.random() * 0.45;
+        
+        const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+        circle.setAttribute('cx', x);
+        circle.setAttribute('cy', y);
+        circle.setAttribute('r', size);
+        circle.setAttribute('fill', `rgba(255,255,255,${opacity})`);
+        group.appendChild(circle);
+    }
+    svg.appendChild(group);
+}
+
+// ========================
+// 通用：Kimi 图标基础结构
+// ========================
+function createKimiBase(svg) {
+    // 定义
+    const defs = document.createElementNS('http://www.w3.org/2000/svg', 'defs');
+    defs.innerHTML = `
+        <clipPath id="round-${svg.id}">
+            <rect x="15" y="15" width="130" height="130" rx="32" ry="32"/>
+        </clipPath>
+        <radialGradient id="glow-${svg.id}" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="rgba(255,255,255,0.12)"/>
+            <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
+        </radialGradient>
+    `;
+    svg.appendChild(defs);
+
+    // 背景
+    const bg = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+    bg.setAttribute('x', '15');
+    bg.setAttribute('y', '15');
+    bg.setAttribute('width', '130');
+    bg.setAttribute('height', '130');
+    bg.setAttribute('rx', '32');
+    bg.setAttribute('fill', '#0a0a0a');
+    svg.appendChild(bg);
+
+    // 星尘（在 clipPath 内）
+    const dustGroup = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+    dustGroup.setAttribute('clip-path', `url(#round-${svg.id})`);
+    
+    // 生成 100 颗颗粒
+    for (let i = 0; i < 100; i++) {
+        const angle = Math.PI + (Math.random() - 0.5) * Math.PI * 0.9;
+        const radius = 30 + Math.random() * 60;
+        const x = 80 + Math.cos(angle) * radius * (0.6 + Math.random() * 0.4);
+        const y = 110 + Math.sin(angle) * radius * 0.5;
+        
+        const size = 0.3 + Math.random() * 2.0;
+        let opacity = 0.1 + Math.random() * 0.4;
+        // 越靠近底部越亮
+        if (y > 120) opacity += 0.15;
+        
+        const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+        circle.setAttribute('cx', x);
+        circle.setAttribute('cy', y);
+        circle.setAttribute('r', size);
+        circle.setAttribute('fill', `rgba(255,255,255,${Math.min(opacity, 0.6)})`);
+        dustGroup.appendChild(circle);
+    }
+    
+    // 底部弧形光晕
+    const glow = document.createElementNS('http://www.w3.org/2000/svg', 'ellipse');
+    glow.setAttribute('cx', '80');
+    glow.setAttribute('cy', '138');
+    glow.setAttribute('rx', '55');
+    glow.setAttribute('ry', '12');
+    glow.setAttribute('fill', `url(#glow-${svg.id})`);
+    dustGroup.appendChild(glow);
+    
+    svg.appendChild(dustGroup);
+
+    // 蓝色星球
+    const planet = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+    planet.setAttribute('cx', '122');
+    planet.setAttribute('cy', '38');
+    planet.setAttribute('r', '7');
+    planet.setAttribute('fill', '#0066FF');
+    svg.appendChild(planet);
+
+    // 星球微光
+    const planetGlow = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+    planetGlow.setAttribute('cx', '122');
+    planetGlow.setAttribute('cy', '38');
+    planetGlow.setAttribute('r', '10');
+    planetGlow.setAttribute('fill', 'rgba(0,102,255,0.15)');
+    svg.appendChild(planetGlow);
+}
+
+// ========================
+// 原 Kimi 图标（对比用）
+// ========================
+const orig = document.getElementById('originalKimi');
+if (orig) {
+    orig.innerHTML = `
+        <defs>
+            <clipPath id="ro"><rect x="10" y="10" width="100" height="100" rx="24"/></clipPath>
+            <radialGradient id="rg" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="rgba(255,255,255,0.1)"/><stop offset="100%" stop-color="rgba(255,255,255,0)"/></radialGradient>
+        </defs>
+        <rect x="10" y="10" width="100" height="100" rx="24" fill="#0a0a0a"/>
+        <g clip-path="url(#ro)"></g>
+        <text x="52" y="66" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="46" font-weight="600" fill="white" text-anchor="middle" letter-spacing="-2">K</text>
+        <circle cx="88" cy="34" r="5.5" fill="#0066FF"/>
+    `;
+    // 填充颗粒
+    const g = orig.querySelector('g');
+    for (let i = 0; i < 60; i++) {
+        const angle = Math.PI + (Math.random() - 0.5) * Math.PI * 0.8;
+        const r = 20 + Math.random() * 45;
+        const x = 60 + Math.cos(angle) * r * 0.7;
+        const y = 80 + Math.sin(angle) * r * 0.5;
+        const c = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+        c.setAttribute('cx', x); c.setAttribute('cy', y);
+        c.setAttribute('r', 0.3 + Math.random() * 1.8);
+        c.setAttribute('fill', `rgba(255,255,255,${0.1 + Math.random() * 0.4})`);
+        g.appendChild(c);
+    }
+}
+
+// ========================
+// Kimi Code 对比版（方案二花括号）
+// ========================
+const kc = document.getElementById('kimiCode');
+if (kc) {
+    kc.innerHTML = `
+        <defs>
+            <clipPath id="kc"><rect x="10" y="10" width="100" height="100" rx="24"/></clipPath>
+            <radialGradient id="kg" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="rgba(255,255,255,0.1)"/><stop offset="100%" stop-color="rgba(255,255,255,0)"/></radialGradient>
+        </defs>
+        <rect x="10" y="10" width="100" height="100" rx="24" fill="#0a0a0a"/>
+        <g clip-path="url(#kc)"></g>
+        <text x="28" y="70" font-family="'JetBrains Mono', 'SF Mono', monospace" font-size="30" font-weight="400" fill="rgba(0,102,255,0.5)" text-anchor="middle">{</text>
+        <text x="54" y="66" font-family="-apple-system, sans-serif" font-size="44" font-weight="600" fill="white" text-anchor="middle" letter-spacing="-2">K</text>
+        <text x="80" y="70" font-family="'JetBrains Mono', 'SF Mono', monospace" font-size="30" font-weight="400" fill="rgba(0,102,255,0.5)" text-anchor="middle">}</text>
+        <circle cx="88" cy="34" r="5.5" fill="#0066FF"/>
+    `;
+    const g2 = kc.querySelector('g');
+    for (let i = 0; i < 60; i++) {
+        const angle = Math.PI + (Math.random() - 0.5) * Math.PI * 0.8;
+        const r = 20 + Math.random() * 45;
+        const x = 60 + Math.cos(angle) * r * 0.7;
+        const y = 80 + Math.sin(angle) * r * 0.5;
+        const c = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+        c.setAttribute('cx', x); c.setAttribute('cy', y);
+        c.setAttribute('r', 0.3 + Math.random() * 1.8);
+        c.setAttribute('fill', `rgba(255,255,255,${0.1 + Math.random() * 0.4})`);
+        g2.appendChild(c);
+    }
+}
+
+// ========================
+// 方案1：终端光标
+// ========================
+const d1 = document.getElementById('design1');
+if (d1) {
+    createKimiBase(d1);
+    // K 字母 - 等宽字体
+    const k = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+    k.setAttribute('x', '72');
+    k.setAttribute('y', '92');
+    k.setAttribute('font-family', "'JetBrains Mono', 'SF Mono', 'Fira Code', monospace");
+    k.setAttribute('font-size', '64');
+    k.setAttribute('font-weight', '700');
+    k.setAttribute('fill', 'white');
+    k.setAttribute('text-anchor', 'middle');
+    k.textContent = 'K';
+    d1.appendChild(k);
+    
+    // 闪烁光标
+    const cursor = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+    cursor.setAttribute('x', '104');
+    cursor.setAttribute('y', '56');
+    cursor.setAttribute('width', '4');
+    cursor.setAttribute('height', '36');
+    cursor.setAttribute('rx', '1');
+    cursor.setAttribute('fill', '#0066FF');
+    
+    // SMIL 动画（比 CSS 更兼容 SVG）
+    const anim = document.createElementNS('http://www.w3.org/2000/svg', 'animate');
+    anim.setAttribute('attributeName', 'opacity');
+    anim.setAttribute('values', '1;0.2;1');
+    anim.setAttribute('dur', '1.4s');
+    anim.setAttribute('repeatCount', 'indefinite');
+    cursor.appendChild(anim);
+    d1.appendChild(cursor);
+}
+
+// ========================
+// 方案2：花括号
+// ========================
+const d2 = document.getElementById('design2');
+if (d2) {
+    createKimiBase(d2);
+    // 左花括号
+    const left = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+    left.setAttribute('x', '42');
+    left.setAttribute('y', '96');
+    left.setAttribute('font-family', "'JetBrains Mono', 'SF Mono', monospace");
+    left.setAttribute('font-size', '48');
+    left.setAttribute('font-weight', '300');
+    left.setAttribute('fill', 'rgba(0,102,255,0.55)');
+    left.setAttribute('text-anchor', 'middle');
+    left.textContent = '{';
+    d2.appendChild(left);
+    
+    // K
+    const k2 = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+    k2.setAttribute('x', '80');
+    k2.setAttribute('y', '92');
+    k2.setAttribute('font-family', "-apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif");
+    k2.setAttribute('font-size', '64');
+    k2.setAttribute('font-weight', '600');
+    k2.setAttribute('fill', 'white');
+    k2.setAttribute('text-anchor', 'middle');
+    k2.setAttribute('letter-spacing', '-2');
+    k2.textContent = 'K';
+    d2.appendChild(k2);
+    
+    // 右花括号
+    const right = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+    right.setAttribute('x', '118');
+    right.setAttribute('y', '96');
+    right.setAttribute('font-family', "'JetBrains Mono', 'SF Mono', monospace");
+    right.setAttribute('font-size', '48');
+    right.setAttribute('font-weight', '300');
+    right.setAttribute('fill', 'rgba(0,102,255,0.55)');
+    right.setAttribute('text-anchor', 'middle');
+    right.textContent = '}';
+    d2.appendChild(right);
+}
+
+// ========================
+// 方案3：代码斜杠
+// ========================
+const d3 = document.getElementById('design3');
+if (d3) {
+    createKimiBase(d3);
+    // K
+    const k3 = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+    k3.setAttribute('x', '74');
+    k3.setAttribute('y', '92');
+    k3.setAttribute('font-family', "-apple-system, sans-serif");
+    k3.setAttribute('font-size', '64');
+    k3.setAttribute('font-weight', '600');
+    k3.setAttribute('fill', 'white');
+    k3.setAttribute('text-anchor', 'middle');
+    k3.setAttribute('letter-spacing', '-2');
+    k3.textContent = 'K';
+    d3.appendChild(k3);
+    
+    // 斜杠
+    const slash = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+    slash.setAttribute('x', '106');
+    slash.setAttribute('y', '94');
+    slash.setAttribute('font-family', "'JetBrains Mono', monospace");
+    slash.setAttribute('font-size', '36');
+    slash.setAttribute('font-weight', '400');
+    slash.setAttribute('fill', '#0066FF');
+    slash.setAttribute('text-anchor', 'middle');
+    slash.textContent = '/';
+    d3.appendChild(slash);
+}
+
+// ========================
+// 方案4：尖括号
+// ========================
+const d4 = document.getElementById('design4');
+if (d4) {
+    createKimiBase(d4);
+    // 左尖括号
+    const lt = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+    lt.setAttribute('x', '44');
+    lt.setAttribute('y', '94');
+    lt.setAttribute('font-family', "'JetBrains Mono', 'SF Mono', monospace");
+    lt.setAttribute('font-size', '40');
+    lt.setAttribute('font-weight', '400');
+    lt.setAttribute('fill', 'rgba(0,102,255,0.6)');
+    lt.setAttribute('text-anchor', 'middle');
+    lt.textContent = '<';
+    d4.appendChild(lt);
+    
+    // K
+    const k4 = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+    k4.setAttribute('x', '80');
+    k4.setAttribute('y', '92');
+    k4.setAttribute('font-family', "-apple-system, sans-serif");
+    k4.setAttribute('font-size', '64');
+    k4.setAttribute('font-weight', '600');
+    k4.setAttribute('fill', 'white');
+    k4.setAttribute('text-anchor', 'middle');
+    k4.setAttribute('letter-spacing', '-2');
+    k4.textContent = 'K';
+    d4.appendChild(k4);
+    
+    // 右尖括号
+    const gt = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+    gt.setAttribute('x', '116');
+    gt.setAttribute('y', '94');
+    gt.setAttribute('font-family', "'JetBrains Mono', 'SF Mono', monospace");
+    gt.setAttribute('font-size', '40');
+    gt.setAttribute('font-weight', '400');
+    gt.setAttribute('fill', 'rgba(0,102,255,0.6)');
+    gt.setAttribute('text-anchor', 'middle');
+    gt.textContent = '>';
+    d4.appendChild(gt);
+}
+
+// ========================
+// 方案5：终端 Prompt 线
+// ========================
+const d5 = document.getElementById('design5');
+if (d5) {
+    createKimiBase(d5);
+    // K
+    const k5 = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+    k5.setAttribute('x', '80');
+    k5.setAttribute('y', '88');
+    k5.setAttribute('font-family', "-apple-system, sans-serif");
+    k5.setAttribute('font-size', '64');
+    k5.setAttribute('font-weight', '600');
+    k5.setAttribute('fill', 'white');
+    k5.setAttribute('text-anchor', 'middle');
+    k5.setAttribute('letter-spacing', '-2');
+    k5.textContent = 'K';
+    d5.appendChild(k5);
+    
+    // 蓝色底线
+    const line = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+    line.setAttribute('x', '46');
+    line.setAttribute('y', '98');
+    line.setAttribute('width', '68');
+    line.setAttribute('height', '2.5');
+    line.setAttribute('rx', '1.25');
+    line.setAttribute('fill', '#0066FF');
+    d5.appendChild(line);
+    
+    // 小光标
+    const miniCursor = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+    miniCursor.setAttribute('x', '118');
+    miniCursor.setAttribute('y', '94');
+    miniCursor.setAttribute('width', '3');
+    miniCursor.setAttribute('height', '8');
+    miniCursor.setAttribute('rx', '1');
+    miniCursor.setAttribute('fill', '#0066FF');
+    const anim2 = document.createElementNS('http://www.w3.org/2000/svg', 'animate');
+    anim2.setAttribute('attributeName', 'opacity');
+    anim2.setAttribute('values', '1;0.2;1');
+    anim2.setAttribute('dur', '1.2s');
+    anim2.setAttribute('repeatCount', 'indefinite');
+    miniCursor.appendChild(anim2);
+    d5.appendChild(miniCursor);
+}
+
+// ========================
+// 方案6：KC 融合
+// ========================
+const d6 = document.getElementById('design6');
+if (d6) {
+    createKimiBase(d6);
+    // K
+    const k6 = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+    k6.setAttribute('x', '68');
+    k6.setAttribute('y', '92');
+    k6.setAttribute('font-family', "-apple-system, sans-serif");
+    k6.setAttribute('font-size', '58');
+    k6.setAttribute('font-weight', '600');
+    k6.setAttribute('fill', 'white');
+    k6.setAttribute('text-anchor', 'middle');
+    k6.setAttribute('letter-spacing', '-3');
+    k6.textContent = 'K';
+    d6.appendChild(k6);
+    
+    // C - 蓝色，等宽风格
+    const c = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+    c.setAttribute('x', '106');
+    c.setAttribute('y', '92');
+    c.setAttribute('font-family', "'JetBrains Mono', 'SF Mono', monospace");
+    c.setAttribute('font-size', '42');
+    c.setAttribute('font-weight', '500');
+    c.setAttribute('fill', '#0066FF');
+    c.setAttribute('text-anchor', 'middle');
+    c.textContent = 'C';
+    d6.appendChild(c);
+}
+</script>
+
+</body>
+</html>
