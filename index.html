@@ -572,6 +572,7 @@
                 setTimeout(() => card.classList.remove('animating'), 600);
             });
         });
+        document.querySelectorAll('.filter-btn').forEach(btn => {
             btn.addEventListener('click', () => {
                 document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
                 btn.classList.add('active');
