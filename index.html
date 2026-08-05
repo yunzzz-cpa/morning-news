@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>早报 - 2026年08月05日</title>
+    <title>早报 - {{DATE}}</title>
     <script>
         try {
             const saved = localStorage.getItem('morning-brief-theme');
@@ -74,6 +74,7 @@
             -webkit-font-smoothing: antialiased;
             min-height: 100vh;
             overflow-x: hidden;
+            -webkit-tap-highlight-color: transparent;
         }
         .nav-bar {
             position: sticky;
@@ -292,6 +293,33 @@
             transition: var(--transition);
             overflow: hidden;
             cursor: pointer;
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .news-card::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: radial-gradient(circle, var(--accent-soft) 0%, transparent 70%);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0;
+            pointer-events: none;
+            transition: none;
+        }
+        .news-card.animating::after {
+            animation: ripple 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        @keyframes ripple {
+            0% { width: 0; height: 0; opacity: 0.25; }
+            100% { width: 600px; height: 600px; opacity: 0; }
+        }
+        .news-card:active {
+            transform: scale(0.985);
+            transition: transform 0.12s ease;
         }
         .news-card:hover {
             transform: translateY(-1px);
@@ -506,10 +534,10 @@
             <span>Morning Brief</span>
         </div>
         <h1>早报</h1>
-        <div class="header-date">2026年08月05日 · 星期三</div>
+        <div class="header-date">{{DATE_FULL}}</div>
         <div class="header-stats">
             <div class="stat-item">
-                <div class="stat-num">6</div>
+                <div class="stat-num">{{TOTAL_COUNT}}</div>
                 <div class="stat-label">条新闻</div>
             </div>
             <div class="stat-item">
@@ -524,170 +552,7 @@
     </header>
 
     <main class="container" id="newsContainer">
-        <!-- AI Section -->
-        <section class="section" data-category="ai">
-            <div class="section-header">
-                <div class="section-icon-wrap ai"><span>🤖</span></div>
-                <div class="section-title-group">
-                    <div class="section-title">人工智能</div>
-                    <div class="section-subtitle">Artificial Intelligence</div>
-                </div>
-                <div class="section-line"></div>
-            </div>
-            <div class="news-list">
-                <article class="news-card ai collapsed" data-category="ai">
-                    <div class="news-card-header">
-                        <span class="news-tag ai">AI治理</span>
-                        <span class="news-time">8月5日</span>
-                    </div>
-                    <h3 class="news-title">白宫召集AI巨头讨论前沿模型安全测试框架</h3>
-                    <p class="news-summary">美国白宫于当地时间周二召集人工智能企业，就一项最新完成的框架展开讨论。该框架旨在评估行业内最先进AI模型的网络安全能力。Anthropic、OpenAI、谷歌、Meta等企业预计将出席此次会议。</p>
-                    <div class="news-actions">
-                        <a href="https://k.sina.com.cn/article_5953190046_162d6789e06703nlhc.html" class="news-source" target="_blank">
-                            <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
-                            查看来源
-                        </a>
-                        <button class="collapse-btn" onclick="toggleCollapse(this)">
-                            展开 <svg width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-                        </button>
-                    </div>
-                </article>
-
-                <article class="news-card ai collapsed" data-category="ai">
-                    <div class="news-card-header">
-                        <span class="news-tag ai">技术突破</span>
-                        <span class="news-time">8月5日</span>
-                    </div>
-                    <h3 class="news-title">DeepSeek V4-Flash登顶全球AI大模型调用量排行榜</h3>
-                    <p class="news-summary">DeepSeek凭借最新V4-Flash模型，在全球AI大模型调用量排行榜登顶第一。在代码生成和复杂推理领域实现性能与成本的双重"断层式领先"，LiveCodeBench评测得分高达93.5%。</p>
-                    <div class="news-actions">
-                        <a href="https://k.sina.com.cn/article_7879923373_1d5ae16ad06801eq0e.html" class="news-source" target="_blank">
-                            <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
-                            查看来源
-                        </a>
-                        <button class="collapse-btn" onclick="toggleCollapse(this)">
-                            展开 <svg width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-                        </button>
-                    </div>
-                </article>
-
-                <article class="news-card ai collapsed" data-category="ai">
-                    <div class="news-card-header">
-                        <span class="news-tag ai">行业趋势</span>
-                        <span class="news-time">8月5日</span>
-                    </div>
-                    <h3 class="news-title">美国AI对中国开源模型依赖从1%飙升至69%</h3>
-                    <p class="news-summary">红杉资本合伙人发文指出，美国整个AI产业正对中国开源模型形成深度依赖。据ATOM报告数据，Qwen占比从2024年1月的1%飙升至2026年2月的69%，中国开源模型已成为美国创业公司技术栈中难以绕开的基础组件。</p>
-                    <div class="news-actions">
-                        <a href="https://k.sina.com.cn/article_7857201856_1d45362c001908i40m.html" class="news-source" target="_blank">
-                            <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
-                            查看来源
-                        </a>
-                        <button class="collapse-btn" onclick="toggleCollapse(this)">
-                            展开 <svg width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-                        </button>
-                    </div>
-                </article>
-            </div>
-        </section>
-
-        <!-- Politics Section -->
-        <section class="section" data-category="politics">
-            <div class="section-header">
-                <div class="section-icon-wrap politics"><span>🏛️</span></div>
-                <div class="section-title-group">
-                    <div class="section-title">国内时政</div>
-                    <div class="section-subtitle">Domestic Politics</div>
-                </div>
-                <div class="section-line"></div>
-            </div>
-            <div class="news-list">
-                <article class="news-card politics collapsed" data-category="politics">
-                    <div class="news-card-header">
-                        <span class="news-tag politics">宏观经济</span>
-                        <span class="news-time">8月5日</span>
-                    </div>
-                    <h3 class="news-title">"十五五"开局之年中国经济交出稳健答卷</h3>
-                    <p class="news-summary">2026年上半年，中国GDP同比增长4.7%，增量达3.6万亿元，为近五年同期最大增量。中国进出口规模历史同期首次突破25万亿元，新设外资企业数量同比增长5.3%。</p>
-                    <div class="news-actions">
-                        <a href="http://politics.people.com.cn/n1/2026/0804/c1001-40773262.html" class="news-source" target="_blank">
-                            <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
-                            查看来源
-                        </a>
-                        <button class="collapse-btn" onclick="toggleCollapse(this)">
-                            展开 <svg width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-                        </button>
-                    </div>
-                </article>
-
-                <article class="news-card politics collapsed" data-category="politics">
-                    <div class="news-card-header">
-                        <span class="news-tag politics">外交动态</span>
-                        <span class="news-time">8月5日</span>
-                    </div>
-                    <h3 class="news-title">外交部回应菲律宾国防部声明</h3>
-                    <p class="news-summary">外交部发言人林剑表示，菲律宾国防部所谓声明充斥谎言和恶意攻击，干涉中国内政，是性质极为恶劣的政治挑衅。同时介绍了中国政府第三批援刚果(金)抗疫医疗专家组相关情况。</p>
-                    <div class="news-actions">
-                        <a href="https://www.chinanews.com.cn/gn/2026/08-04/10671937.shtml" class="news-source" target="_blank">
-                            <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
-                            查看来源
-                        </a>
-                        <button class="collapse-btn" onclick="toggleCollapse(this)">
-                            展开 <svg width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-                        </button>
-                    </div>
-                </article>
-            </div>
-        </section>
-
-        <!-- Stock Section -->
-        <section class="section" data-category="stock">
-            <div class="section-header">
-                <div class="section-icon-wrap stock"><span>📈</span></div>
-                <div class="section-title-group">
-                    <div class="section-title">股市投资</div>
-                    <div class="section-subtitle">Stock Market</div>
-                </div>
-                <div class="section-line"></div>
-            </div>
-            <div class="news-list">
-                <article class="news-card stock collapsed" data-category="stock">
-                    <div class="news-card-header">
-                        <span class="news-tag stock">市场行情</span>
-                        <span class="news-time">8月5日</span>
-                    </div>
-                    <h3 class="news-title">创业板指大涨5.64%，A股震荡反弹</h3>
-                    <p class="news-summary">8月4日，市场震荡反弹，创业板指领涨，大涨5.64%。沪深两市成交额2.21万亿元，较上一个交易日放量2162亿元。市场热点快速轮动，赚钱效应明显。</p>
-                    <div class="news-actions">
-                        <a href="https://www.zhihu.com/question/2067907436883751438" class="news-source" target="_blank">
-                            <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
-                            查看来源
-                        </a>
-                        <button class="collapse-btn" onclick="toggleCollapse(this)">
-                            展开 <svg width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-                        </button>
-                    </div>
-                </article>
-
-                <article class="news-card stock collapsed" data-category="stock">
-                    <div class="news-card-header">
-                        <span class="news-tag stock">个股动态</span>
-                        <span class="news-time">8月5日</span>
-                    </div>
-                    <h3 class="news-title">中国科传涨停：业绩增长+AI融合+现金分红</h3>
-                    <p class="news-summary">中国科传（sh601858）触及涨停，涨幅10.02%。2025年归母净利润同比增11.77%，医学AI大模型已产生营收，同时兑现高比例现金分红超2.4亿元。</p>
-                    <div class="news-actions">
-                        <a href="https://finance.sina.com.cn/stock/aiassist/ydfx/2026-08-04/doc-inimchzt5443070.shtml" class="news-source" target="_blank">
-                            <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
-                            查看来源
-                        </a>
-                        <button class="collapse-btn" onclick="toggleCollapse(this)">
-                            展开 <svg width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-                        </button>
-                    </div>
-                </article>
-            </div>
-        </section>
+{{CONTENT}}
     </main>
 
     <footer class="footer">
@@ -698,7 +563,15 @@
     <button class="back-to-top" id="backToTop" onclick="scrollToTop()">↑</button>
 
     <script>
-        document.querySelectorAll('.filter-btn').forEach(btn => {
+        document.querySelectorAll('.news-card').forEach(card => {
+            card.addEventListener('click', (e) => {
+                if (e.target.closest('.news-source') || e.target.closest('.collapse-btn')) return;
+                card.classList.remove('animating');
+                void card.offsetWidth;
+                card.classList.add('animating');
+                setTimeout(() => card.classList.remove('animating'), 600);
+            });
+        });
             btn.addEventListener('click', () => {
                 document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
                 btn.classList.add('active');
