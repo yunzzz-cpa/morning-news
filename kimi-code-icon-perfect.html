@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kimi Code 图标 - 100% 原图纹理</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #000;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+    padding: 60px 40px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+  h1 {
+    color: #888;
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: 3px;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 50px;
+    max-width: 1200px;
+  }
+  .icon-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+  .icon-label {
+    color: #666;
+    font-size: 13px;
+    letter-spacing: 1px;
+  }
+
+  /* ===== 图标基础 ===== */
+  .icon-kimi {
+    width: 180px;
+    height: 180px;
+    border-radius: 42px;
+    position: relative;
+    overflow: hidden;
+    box-shadow:
+      0 20px 60px rgba(0, 0, 0, 0.8),
+      0 8px 20px rgba(0, 0, 0, 0.6),
+      inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  }
+
+  /* 使用原图提取的背景 */
+  .icon-bg-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  /* 符号层 */
+  .symbol-wrap {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+  }
+  .symbol {
+    color: #ffffff;
+    font-weight: 500;
+    line-height: 1;
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.5);
+  }
+
+  /* 版本一：<> */
+  .v1 .symbol {
+    font-size: 82px;
+    font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+    letter-spacing: -4px;
+    font-weight: 400;
+  }
+
+  /* 版本二：{} */
+  .v2 .symbol {
+    font-size: 92px;
+    font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+    font-weight: 400;
+  }
+
+  /* 版本三：</> */
+  .v3 .symbol {
+    font-size: 62px;
+    font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+    letter-spacing: -2px;
+    font-weight: 400;
+  }
+
+  /* 版本四：K<> */
+  .v4 .symbol {
+    font-size: 76px;
+    font-weight: 600;
+    font-family: -apple-system, 'SF Pro Display', sans-serif;
+    position: relative;
+  }
+  .v4 .code-mini {
+    font-size: 24px;
+    font-family: 'SF Mono', monospace;
+    color: #8bb4f7;
+    position: absolute;
+    right: -10px;
+    top: -8px;
+    font-weight: 400;
+    text-shadow: 0 0 10px rgba(139, 180, 247, 0.3);
+  }
+
+  /* ===== 对比区域 ===== */
+  .compare-section {
+    margin-top: 20px;
+    display: flex;
+    gap: 40px;
+    align-items: center;
+  }
+  .compare-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+  .compare-label {
+    color: #666;
+    font-size: 12px;
+    letter-spacing: 1px;
+  }
+  .compare-img {
+    width: 140px;
+    height: 140px;
+    border-radius: 32px;
+    object-fit: cover;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.6);
+  }
+
+  /* Dock 预览 */
+  .dock-preview {
+    display: flex;
+    gap: 20px;
+    align-items: flex-end;
+    margin-top: 30px;
+    padding: 20px 40px;
+    background: rgba(255,255,255,0.03);
+    border-radius: 20px;
+  }
+  .dock-icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 15px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+  }
+  .dock-icon .icon-bg-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .dock-icon .symbol-wrap {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .dock-icon .symbol {
+    font-size: 28px !important;
+    letter-spacing: -1px;
+  }
+  .dock-icon.v2 .symbol { font-size: 32px !important; }
+  .dock-icon.v3 .symbol { font-size: 22px !important; }
+  .dock-icon.v4 .symbol { font-size: 30px !important; }
+  .dock-icon.v4 .code-mini { font-size: 10px; right: -3px; top: -3px; }
+
+  .footer {
+    color: #444;
+    font-size: 11px;
+    margin-top: 20px;
+    text-align: center;
+    line-height: 1.8;
+  }
+
+  @media (max-width: 768px) {
+    .grid { grid-template-columns: repeat(2, 1fr); gap: 30px; }
+    .icon-kimi { width: 140px; height: 140px; border-radius: 32px; }
+    .compare-section { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<h1>Kimi Code 图标 - 100% 原图纹理</h1>
+
+<div class="grid">
+
+  <div class="icon-card">
+    <div class="icon-kimi v1">
+      <img class="icon-bg-img" src="kimi-icon-bg-512.jpg" alt="bg">
+      <div class="symbol-wrap">
+        <div class="symbol">&lt;&gt;</div>
+      </div>
+    </div>
+    <div class="icon-label">&lt;&gt;</div>
+  </div>
+
+  <div class="icon-card">
+    <div class="icon-kimi v2">
+      <img class="icon-bg-img" src="kimi-icon-bg-512.jpg" alt="bg">
+      <div class="symbol-wrap">
+        <div class="symbol">{}</div>
+      </div>
+    </div>
+    <div class="icon-label">{}</div>
+  </div>
+
+  <div class="icon-card">
+    <div class="icon-kimi v3">
+      <img class="icon-bg-img" src="kimi-icon-bg-512.jpg" alt="bg">
+      <div class="symbol-wrap">
+        <div class="symbol">&lt;/&gt;</div>
+      </div>
+    </div>
+    <div class="icon-label">&lt;/&gt;</div>
+  </div>
+
+  <div class="icon-card">
+    <div class="icon-kimi v4">
+      <img class="icon-bg-img" src="kimi-icon-bg-512.jpg" alt="bg">
+      <div class="symbol-wrap">
+        <div class="symbol">K<span class="code-mini">&lt;&gt;</span></div>
+      </div>
+    </div>
+    <div class="icon-label">K&lt;&gt;</div>
+  </div>
+
+</div>
+
+<!-- 对比区域 -->
+<div class="compare-section">
+  <div class="compare-item">
+    <div class="compare-label">原图（Kimi App）</div>
+    <img class="compare-img" src="kimi-icon-bg.jpg" style="opacity:0.6;" alt="original">
+    <!-- 这里显示原图，但上面加一个K -->
+    <div style="position: relative; width: 140px; height: 140px; margin-top: -140px;">
+      <div style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-size: 64px; color: white; font-weight: 600; font-family: -apple-system, sans-serif; text-shadow: 0 2px 8px rgba(0,0,0,0.4);">K</div>
+    </div>
+  </div>
+  <div style="color: #444; font-size: 24px;">→</div>
+  <div class="compare-item">
+    <div class="compare-label">Kimi Code &lt;/&gt;</div>
+    <div class="icon-kimi v3" style="width: 140px; height: 140px; border-radius: 32px;">
+      <img class="icon-bg-img" src="kimi-icon-bg-512.jpg" alt="bg">
+      <div class="symbol-wrap">
+        <div class="symbol" style="font-size: 48px;">&lt;/&gt;</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Dock 预览 -->
+<div style="margin-top: 40px; text-align: center;">
+  <div style="color: #666; font-size: 12px; margin-bottom: 16px; letter-spacing: 1px;">macOS Dock 栏预览</div>
+  <div class="dock-preview">
+    <div class="dock-icon v1">
+      <img class="icon-bg-img" src="kimi-icon-bg-512.jpg" alt="bg">
+      <div class="symbol-wrap">
+        <div class="symbol">&lt;&gt;</div>
+      </div>
+    </div>
+    <div class="dock-icon v2">
+      <img class="icon-bg-img" src="kimi-icon-bg-512.jpg" alt="bg">
+      <div class="symbol-wrap">
+        <div class="symbol">{}</div>
+      </div>
+    </div>
+    <div class="dock-icon v3">
+      <img class="icon-bg-img" src="kimi-icon-bg-512.jpg" alt="bg">
+      <div class="symbol-wrap">
+        <div class="symbol">&lt;/&gt;</div>
+      </div>
+    </div>
+    <div class="dock-icon v4">
+      <img class="icon-bg-img" src="kimi-icon-bg-512.jpg" alt="bg">
+      <div class="symbol-wrap">
+        <div class="symbol">K<span class="code-mini">&lt;&gt;</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  底部纹理 100% 提取自原图 · 仅替换中心符号 · 可导出 PNG 用于桌面端<br>
+  背景图尺寸: 512×512 · 支持 Retina 高清显示
+</div>
+
+</body>
+</html>
