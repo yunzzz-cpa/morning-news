@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kimi Code 图标设计稿 v2</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #1a1a1a;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    padding: 40px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+  h1 {
+    color: #e0e0e0;
+    font-size: 18px;
+    font-weight: 400;
+    letter-spacing: 2px;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+    max-width: 1000px;
+  }
+  .icon-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+  .icon-label {
+    color: #888;
+    font-size: 12px;
+    letter-spacing: 1px;
+    text-align: center;
+  }
+
+  /* ===== 方形圆角图标基础 ===== */
+  .icon-app {
+    width: 128px;
+    height: 128px;
+    border-radius: 28px; /* iOS/macOS 标准圆角 */
+    position: relative;
+    overflow: hidden;
+    /*  subtle outer shadow for depth */
+    box-shadow:
+      0 8px 32px rgba(0, 0, 0, 0.6),
+      0 2px 8px rgba(0, 0, 0, 0.4),
+      inset 0 1px 1px rgba(255, 255, 255, 0.08);
+  }
+
+  /* 背景：深空蓝黑渐变 */
+  .bg-space {
+    background: linear-gradient(
+      180deg,
+      #0c1220 0%,
+      #0a0e1a 35%,
+      #080c14 65%,
+      #06080f 85%,
+      #0d0f12 100%
+    );
+  }
+
+  /* ===== 月球表面纹理（底部1/3） ===== */
+  .moon-surface {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 42%;
+    background: linear-gradient(
+      180deg,
+      transparent 0%,
+      rgba(180, 185, 195, 0.06) 15%,
+      rgba(160, 165, 175, 0.12) 40%,
+      rgba(140, 145, 155, 0.18) 70%,
+      rgba(120, 125, 135, 0.22) 100%
+    );
+  }
+
+  /* 陨石坑 - 内凹阴影效果 */
+  .crater {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(100, 105, 115, 0.15);
+    box-shadow:
+      inset 2px 2px 4px rgba(0, 0, 0, 0.25),
+      inset -1px -1px 2px rgba(255, 255, 255, 0.04);
+  }
+
+  /* 大陨石坑 */
+  .crater-lg {
+    width: 28px;
+    height: 22px;
+    background: rgba(90, 95, 105, 0.2);
+    box-shadow:
+      inset 3px 3px 6px rgba(0, 0, 0, 0.3),
+      inset -2px -2px 3px rgba(255, 255, 255, 0.03);
+  }
+  .crater-md {
+    width: 18px;
+    height: 14px;
+    background: rgba(110, 115, 125, 0.16);
+    box-shadow:
+      inset 2px 2px 4px rgba(0, 0, 0, 0.25),
+      inset -1px -1px 2px rgba(255, 255, 255, 0.03);
+  }
+  .crater-sm {
+    width: 10px;
+    height: 8px;
+    background: rgba(120, 125, 135, 0.12);
+    box-shadow:
+      inset 1px 1px 2px rgba(0, 0, 0, 0.2);
+  }
+
+  /* 符号容器 */
+  .symbol {
+    position: absolute;
+    top: 42%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #f5f5f7;
+    font-weight: 400;
+    line-height: 1;
+    z-index: 10;
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.5);
+  }
+
+  /* 版本一：<> */
+  .v1 .symbol {
+    font-size: 52px;
+    font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+    letter-spacing: -3px;
+    color: #ffffff;
+  }
+
+  /* 版本二：{} */
+  .v2 .symbol {
+    font-size: 58px;
+    font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+    color: #ffffff;
+  }
+
+  /* 版本三：</> */
+  .v3 .symbol {
+    font-size: 40px;
+    font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+    letter-spacing: -1px;
+    color: #ffffff;
+  }
+
+  /* 版本四：K + <> 融合 */
+  .v4 .symbol {
+    font-size: 48px;
+    font-weight: 500;
+    font-family: -apple-system, sans-serif;
+    color: #ffffff;
+  }
+  .v4 .code-mini {
+    font-size: 16px;
+    font-family: 'SF Mono', monospace;
+    color: #8bb4f7;
+    position: absolute;
+    right: -2px;
+    top: -4px;
+    text-shadow: 0 0 8px rgba(139, 180, 247, 0.3);
+  }
+
+  /* 版本五：[] */
+  .v5 .symbol {
+    font-size: 54px;
+    font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+    letter-spacing: -4px;
+    color: #ffffff;
+  }
+
+  /* 版本六：$_ */
+  .v6 .symbol {
+    font-size: 36px;
+    font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+    color: #ffffff;
+    letter-spacing: 1px;
+  }
+  .v6 .cursor {
+    display: inline-block;
+    width: 2px;
+    height: 22px;
+    background: #6b9cf0;
+    margin-left: 2px;
+    vertical-align: middle;
+    animation: blink 1.2s step-end infinite;
+  }
+  @keyframes blink { 50% { opacity: 0; } }
+
+  /* 版本七：# */
+  .v7 .symbol {
+    font-size: 56px;
+    font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+    color: #ffffff;
+  }
+
+  /* 版本八：01 */
+  .v8 .symbol {
+    font-size: 44px;
+    font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+    letter-spacing: 3px;
+    color: #e8e8ec;
+  }
+
+  /* 底部小标签 */
+  .footer {
+    color: #555;
+    font-size: 11px;
+    margin-top: 10px;
+    text-align: center;
+  }
+
+  @media (max-width: 768px) {
+    .grid { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+    .icon-app { width: 100px; height: 100px; border-radius: 22px; }
+  }
+</style>
+</head>
+<body>
+
+<h1>Kimi Code 图标设计稿 v2</h1>
+
+<div class="grid">
+
+  <!-- 版本一：<> -->
+  <div class="icon-card">
+    <div class="icon-app bg-space v1">
+      <div class="moon-surface"></div>
+      <!-- 陨石坑 -->
+      <div class="crater crater-lg" style="bottom:18%;left:12%;"></div>
+      <div class="crater crater-md" style="bottom:28%;left:32%;"></div>
+      <div class="crater crater-sm" style="bottom:22%;left:52%;"></div>
+      <div class="crater crater-md" style="bottom:14%;right:22%;"></div>
+      <div class="crater crater-sm" style="bottom:32%;right:38%;"></div>
+      <div class="crater crater-lg" style="bottom:8%;right:8%;"></div>
+      <div class="symbol">&lt;&gt;</div>
+    </div>
+    <div class="icon-label">版本一<br>尖括号</div>
+  </div>
+
+  <!-- 版本二：{} -->
+  <div class="icon-card">
+    <div class="icon-app bg-space v2">
+      <div class="moon-surface"></div>
+      <div class="crater crater-lg" style="bottom:16%;left:15%;"></div>
+      <div class="crater crater-sm" style="bottom:26%;left:35%;"></div>
+      <div class="crater crater-md" style="bottom:20%;left:55%;"></div>
+      <div class="crater crater-sm" style="bottom:12%;right:28%;"></div>
+      <div class="crater crater-lg" style="bottom:30%;right:12%;"></div>
+      <div class="crater crater-sm" style="bottom:8%;right:8%;"></div>
+      <div class="symbol">{}</div>
+    </div>
+    <div class="icon-label">版本二<br>花括号</div>
+  </div>
+
+  <!-- 版本三：</> -->
+  <div class="icon-card">
+    <div class="icon-app bg-space v3">
+      <div class="moon-surface"></div>
+      <div class="crater crater-lg" style="bottom:20%;left:10%;"></div>
+      <div class="crater crater-md" style="bottom:14%;left:38%;"></div>
+      <div class="crater crater-sm" style="bottom:26%;left:28%;"></div>
+      <div class="crater crater-md" style="bottom:18%;right:25%;"></div>
+      <div class="crater crater-sm" style="bottom:10%;right:10%;"></div>
+      <div class="crater crater-lg" style="bottom:32%;right:42%;"></div>
+      <div class="symbol">&lt;/&gt;</div>
+    </div>
+    <div class="icon-label">版本三<br>代码标签</div>
+  </div>
+
+  <!-- 版本四：K + <> -->
+  <div class="icon-card">
+    <div class="icon-app bg-space v4">
+      <div class="moon-surface"></div>
+      <div class="crater crater-lg" style="bottom:18%;left:14%;"></div>
+      <div class="crater crater-sm" style="bottom:28%;left:34%;"></div>
+      <div class="crater crater-md" style="bottom:16%;right:30%;"></div>
+      <div class="crater crater-sm" style="bottom:10%;right:10%;"></div>
+      <div class="crater crater-lg" style="bottom:30%;right:45%;"></div>
+      <div class="symbol">K<span class="code-mini">&lt;&gt;</span></div>
+    </div>
+    <div class="icon-label">版本四<br>K融合代码</div>
+  </div>
+
+  <!-- 版本五：[] -->
+  <div class="icon-card">
+    <div class="icon-app bg-space v5">
+      <div class="moon-surface"></div>
+      <div class="crater crater-lg" style="bottom:14%;left:12%;"></div>
+      <div class="crater crater-md" style="bottom:24%;left:30%;"></div>
+      <div class="crater crater-sm" style="bottom:18%;left:50%;"></div>
+      <div class="crater crater-md" style="bottom:12%;right:22%;"></div>
+      <div class="crater crater-sm" style="bottom:30%;right:38%;"></div>
+      <div class="crater crater-lg" style="bottom:8%;right:8%;"></div>
+      <div class="symbol">[]</div>
+    </div>
+    <div class="icon-label">版本五<br>方括号</div>
+  </div>
+
+  <!-- 版本六：$_ -->
+  <div class="icon-card">
+    <div class="icon-app bg-space v6">
+      <div class="moon-surface"></div>
+      <div class="crater crater-lg" style="bottom:16%;left:18%;"></div>
+      <div class="crater crater-sm" style="bottom:26%;left:38%;"></div>
+      <div class="crater crater-md" style="bottom:20%;right:28%;"></div>
+      <div class="crater crater-sm" style="bottom:10%;right:10%;"></div>
+      <div class="crater crater-lg" style="bottom:32%;left:50%;"></div>
+      <div class="symbol">$_<span class="cursor"></span></div>
+    </div>
+    <div class="icon-label">版本六<br>终端提示符</div>
+  </div>
+
+  <!-- 版本七：# -->
+  <div class="icon-card">
+    <div class="icon-app bg-space v7">
+      <div class="moon-surface"></div>
+      <div class="crater crater-lg" style="bottom:18%;left:10%;"></div>
+      <div class="crater crater-sm" style="bottom:28%;left:32%;"></div>
+      <div class="crater crater-md" style="bottom:14%;left:52%;"></div>
+      <div class="crater crater-sm" style="bottom:22%;right:32%;"></div>
+      <div class="crater crater-lg" style="bottom:10%;right:10%;"></div>
+      <div class="symbol">#</div>
+    </div>
+    <div class="icon-label">版本七<br>井号</div>
+  </div>
+
+  <!-- 版本八：01 -->
+  <div class="icon-card">
+    <div class="icon-app bg-space v8">
+      <div class="moon-surface"></div>
+      <div class="crater crater-lg" style="bottom:14%;left:14%;"></div>
+      <div class="crater crater-sm" style="bottom:24%;left:36%;"></div>
+      <div class="crater crater-md" style="bottom:18%;right:26%;"></div>
+      <div class="crater crater-sm" style="bottom:10%;right:10%;"></div>
+      <div class="crater crater-lg" style="bottom:30%;left:48%;"></div>
+      <div class="symbol">01</div>
+    </div>
+    <div class="icon-label">版本八<br>二进制</div>
+  </div>
+
+</div>
+
+<div class="footer">
+  方形圆角 · 深空蓝黑背景 · 底部灰色月球表面 · 内凹陨石坑纹理 · 白色代码符号
+</div>
+
+</body>
+</html>
