@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kimi Code 图标 - 底部纹理100%原图</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #000;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+    padding: 60px 40px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+  h1 {
+    color: #888;
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: 3px;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 50px;
+    max-width: 1200px;
+  }
+  .icon-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+  .icon-label {
+    color: #666;
+    font-size: 13px;
+    letter-spacing: 1px;
+  }
+
+  .icon-kimi {
+    width: 180px;
+    height: 180px;
+    border-radius: 42px;
+    position: relative;
+    overflow: hidden;
+    box-shadow:
+      0 20px 60px rgba(0, 0, 0, 0.8),
+      0 8px 20px rgba(0, 0, 0, 0.6);
+  }
+
+  /* 背景层 */
+  .bg-layer {
+    position: absolute;
+    inset: 0;
+    background: #040406;
+  }
+
+  /* 边缘光晕 */
+  .glow-layer {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 60% 60% at 15% 90%, rgba(36, 94, 140, 0.35) 0%, transparent 70%),
+      radial-gradient(ellipse 50% 50% at 85% 90%, rgba(13, 60, 112, 0.25) 0%, transparent 60%);
+  }
+
+  /* 底部纹理层 - 使用原图提取的纹理 */
+  .texture-layer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 52%; /* 纹理占图标下半部分 */
+    background-image: url('moon-texture-bottom.png');
+    background-size: cover;
+    background-position: center bottom;
+    background-repeat: no-repeat;
+  }
+
+  /* 融合过渡 */
+  .blend-layer {
+    position: absolute;
+    bottom: 52%;
+    left: 0;
+    right: 0;
+    height: 80px;
+    background: linear-gradient(
+      180deg,
+      transparent 0%,
+      rgba(4, 4, 6, 0.5) 30%,
+      rgba(4, 4, 6, 0.2) 70%,
+      transparent 100%
+    );
+  }
+
+  /* 符号 */
+  .symbol-wrap {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+  }
+  .symbol {
+    color: #ffffff;
+    font-weight: 500;
+    line-height: 1;
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.5);
+  }
+
+  .v1 .symbol {
+    font-size: 82px;
+    font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+    letter-spacing: -4px;
+    font-weight: 400;
+  }
+  .v2 .symbol {
+    font-size: 92px;
+    font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+    font-weight: 400;
+  }
+  .v3 .symbol {
+    font-size: 62px;
+    font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+    letter-spacing: -2px;
+    font-weight: 400;
+  }
+  .v4 .symbol {
+    font-size: 76px;
+    font-weight: 600;
+    font-family: -apple-system, 'SF Pro Display', sans-serif;
+    position: relative;
+  }
+  .v4 .code-mini {
+    font-size: 24px;
+    font-family: 'SF Mono', monospace;
+    color: #8bb4f7;
+    position: absolute;
+    right: -10px;
+    top: -8px;
+    font-weight: 400;
+    text-shadow: 0 0 10px rgba(139, 180, 247, 0.3);
+  }
+
+  /* 对比区 */
+  .compare-section {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+    margin-top: 10px;
+  }
+  .compare-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+  .compare-label {
+    color: #666;
+    font-size: 11px;
+  }
+  .compare-img {
+    width: 120px;
+    height: 120px;
+    border-radius: 28px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.6);
+  }
+
+  /* Dock */
+  .dock-preview {
+    display: flex;
+    gap: 20px;
+    align-items: flex-end;
+    margin-top: 30px;
+    padding: 20px 40px;
+    background: rgba(255,255,255,0.03);
+    border-radius: 20px;
+  }
+  .dock-icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 15px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+  }
+  .dock-icon .bg-layer { background: #040406; }
+  .dock-icon .texture-layer { height: 52%; }
+  .dock-icon .blend-layer { bottom: 52%; height: 30px; }
+  .dock-icon .symbol {
+    font-size: 28px !important;
+    letter-spacing: -1px;
+  }
+  .dock-icon.v2 .symbol { font-size: 32px !important; }
+  .dock-icon.v3 .symbol { font-size: 22px !important; }
+  .dock-icon.v4 .symbol { font-size: 30px !important; }
+  .dock-icon.v4 .code-mini { font-size: 10px; right: -3px; top: -3px; }
+
+  .footer {
+    color: #444;
+    font-size: 11px;
+    margin-top: 20px;
+    text-align: center;
+    line-height: 1.8;
+  }
+
+  @media (max-width: 768px) {
+    .grid { grid-template-columns: repeat(2, 1fr); gap: 30px; }
+    .icon-kimi { width: 140px; height: 140px; border-radius: 32px; }
+  }
+</style>
+</head>
+<body>
+
+<h1>Kimi Code 图标 - 底部纹理 100% 原图</h1>
+
+<div class="grid">
+
+  <div class="icon-card">
+    <div class="icon-kimi v1">
+      <div class="bg-layer"></div>
+      <div class="glow-layer"></div>
+      <div class="texture-layer"></div>
+      <div class="blend-layer"></div>
+      <div class="symbol-wrap">
+        <div class="symbol">&lt;&gt;</div>
+      </div>
+    </div>
+    <div class="icon-label">&lt;&gt;</div>
+  </div>
+
+  <div class="icon-card">
+    <div class="icon-kimi v2">
+      <div class="bg-layer"></div>
+      <div class="glow-layer"></div>
+      <div class="texture-layer"></div>
+      <div class="blend-layer"></div>
+      <div class="symbol-wrap">
+        <div class="symbol">{}</div>
+      </div>
+    </div>
+    <div class="icon-label">{}</div>
+  </div>
+
+  <div class="icon-card">
+    <div class="icon-kimi v3">
+      <div class="bg-layer"></div>
+      <div class="glow-layer"></div>
+      <div class="texture-layer"></div>
+      <div class="blend-layer"></div>
+      <div class="symbol-wrap">
+        <div class="symbol">&lt;/&gt;</div>
+      </div>
+    </div>
+    <div class="icon-label">&lt;/&gt;</div>
+  </div>
+
+  <div class="icon-card">
+    <div class="icon-kimi v4">
+      <div class="bg-layer"></div>
+      <div class="glow-layer"></div>
+      <div class="texture-layer"></div>
+      <div class="blend-layer"></div>
+      <div class="symbol-wrap">
+        <div class="symbol">K<span class="code-mini">&lt;&gt;</span></div>
+      </div>
+    </div>
+    <div class="icon-label">K&lt;&gt;</div>
+  </div>
+
+</div>
+
+<!-- 对比 -->
+<div class="compare-section">
+  <div class="compare-item">
+    <div class="compare-label">原图底部纹理</div>
+    <img class="compare-img" src="moon-texture-bottom.png" alt="original texture">
+  </div>
+  <div style="color: #444; font-size: 20px;">→</div>
+  <div class="compare-item">
+    <div class="compare-label">应用到新图标</div>
+    <div class="icon-kimi v3" style="width: 120px; height: 120px; border-radius: 28px;">
+      <div class="bg-layer"></div>
+      <div class="glow-layer"></div>
+      <div class="texture-layer"></div>
+      <div class="blend-layer"></div>
+      <div class="symbol-wrap">
+        <div class="symbol" style="font-size: 42px;">&lt;/&gt;</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Dock -->
+<div style="margin-top: 40px; text-align: center;">
+  <div style="color: #666; font-size: 12px; margin-bottom: 16px; letter-spacing: 1px;">macOS Dock 栏预览</div>
+  <div class="dock-preview">
+    <div class="dock-icon v1">
+      <div class="bg-layer"></div>
+      <div class="texture-layer"></div>
+      <div class="symbol-wrap">
+        <div class="symbol">&lt;&gt;</div>
+      </div>
+    </div>
+    <div class="dock-icon v2">
+      <div class="bg-layer"></div>
+      <div class="texture-layer"></div>
+      <div class="symbol-wrap">
+        <div class="symbol">{}</div>
+      </div>
+    </div>
+    <div class="dock-icon v3">
+      <div class="bg-layer"></div>
+      <div class="texture-layer"></div>
+      <div class="symbol-wrap">
+        <div class="symbol">&lt;/&gt;</div>
+      </div>
+    </div>
+    <div class="dock-icon v4">
+      <div class="bg-layer"></div>
+      <div class="texture-layer"></div>
+      <div class="symbol-wrap">
+        <div class="symbol">K<span class="code-mini">&lt;&gt;</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  底部纹理精确提取自原图 y=70%~100% 区域 · 已去除K字母 · 100% 原图像素<br>
+  深色背景 + 边缘光晕 + 底部纹理 + 代码符号
+</div>
+
+</body>
+</html>
