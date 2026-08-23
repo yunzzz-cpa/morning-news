@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kimi Code 图标 - 精确复刻版</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #000;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+    padding: 60px 40px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+  h1 {
+    color: #888;
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: 3px;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 50px;
+    max-width: 1200px;
+  }
+  .icon-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+  .icon-label {
+    color: #666;
+    font-size: 13px;
+    letter-spacing: 1px;
+  }
+
+  /* ===== 精确复刻 Kimi App 图标 ===== */
+  .icon-kimi {
+    width: 180px;
+    height: 180px;
+    border-radius: 42px; /* iOS 标准圆角比例 */
+    position: relative;
+    overflow: hidden;
+    /* 外阴影 - 模拟 iOS 图标悬浮感 */
+    box-shadow:
+      0 20px 60px rgba(0, 0, 0, 0.8),
+      0 8px 20px rgba(0, 0, 0, 0.6),
+      inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  }
+
+  /* 背景层：极深的黑蓝色 */
+  .icon-bg {
+    position: absolute;
+    inset: 0;
+    background: #060508;
+  }
+
+  /* 微妙的边缘光晕 - 从四角数据复刻 */
+  .icon-glow {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 70% 70% at 15% 15%, rgba(18, 55, 100, 0.25) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 60% at 85% 10%, rgba(5, 10, 30, 0.15) 0%, transparent 50%),
+      radial-gradient(ellipse 70% 70% at 10% 85%, rgba(36, 94, 140, 0.2) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 60% at 85% 90%, rgba(13, 60, 112, 0.18) 0%, transparent 55%);
+  }
+
+  /* ===== 月球表面纹理（底部 40% 区域） ===== */
+  .moon-surface {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 45%;
+    /* 基础灰色渐变 */
+    background: linear-gradient(
+      180deg,
+      transparent 0%,
+      rgba(30, 32, 36, 0.3) 20%,
+      rgba(50, 52, 56, 0.5) 50%,
+      rgba(70, 72, 76, 0.6) 80%,
+      rgba(85, 87, 91, 0.5) 100%
+    );
+  }
+
+  /* 陨石坑 - 用 radial-gradient 模拟内凹效果 */
+  .craters {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 45%;
+    /* 大陨石坑 1 - 左下 */
+    background:
+      /* 大坑 1 */
+      radial-gradient(ellipse 45px 35px at 22% 78%,
+        rgba(60, 62, 66, 0.6) 0%,
+        rgba(40, 42, 46, 0.4) 40%,
+        transparent 70%),
+      /* 大坑 2 - 中下 */
+      radial-gradient(ellipse 55px 40px at 48% 85%,
+        rgba(75, 77, 81, 0.55) 0%,
+        rgba(55, 57, 61, 0.35) 45%,
+        transparent 70%),
+      /* 大坑 3 - 右下 */
+      radial-gradient(ellipse 40px 32px at 75% 72%,
+        rgba(65, 67, 71, 0.5) 0%,
+        rgba(45, 47, 51, 0.3) 40%,
+        transparent 65%),
+      /* 中坑 1 */
+      radial-gradient(ellipse 28px 22px at 35% 65%,
+        rgba(50, 52, 56, 0.45) 0%,
+        rgba(35, 37, 41, 0.25) 45%,
+        transparent 65%),
+      /* 中坑 2 */
+      radial-gradient(ellipse 32px 25px at 62% 60%,
+        rgba(55, 57, 61, 0.4) 0%,
+        rgba(38, 40, 44, 0.2) 45%,
+        transparent 65%),
+      /* 小坑 1 */
+      radial-gradient(ellipse 15px 12px at 15% 55%,
+        rgba(45, 47, 51, 0.35) 0%,
+        transparent 60%),
+      /* 小坑 2 */
+      radial-gradient(ellipse 18px 14px at 82% 58%,
+        rgba(48, 50, 54, 0.35) 0%,
+        transparent 60%),
+      /* 小坑 3 */
+      radial-gradient(ellipse 12px 10px at 50% 50%,
+        rgba(42, 44, 48, 0.3) 0%,
+        transparent 55%),
+      /* 亮斑 1 - 模拟反光 */
+      radial-gradient(ellipse 25px 18px at 30% 88%,
+        rgba(120, 122, 126, 0.25) 0%,
+        transparent 60%),
+      /* 亮斑 2 */
+      radial-gradient(ellipse 30px 22px at 58% 92%,
+        rgba(110, 112, 116, 0.2) 0%,
+        transparent 55%),
+      /* 亮斑 3 */
+      radial-gradient(ellipse 20px 15px at 78% 88%,
+        rgba(105, 107, 111, 0.22) 0%,
+        transparent 55%);
+  }
+
+  /* 陨石坑内阴影 - 内凹效果 */
+  .crater-shadows {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 45%;
+    background:
+      /* 坑 1 内阴影 */
+      radial-gradient(ellipse 42px 32px at 22% 78%,
+        transparent 30%,
+        rgba(0, 0, 0, 0.3) 55%,
+        transparent 75%),
+      /* 坑 2 内阴影 */
+      radial-gradient(ellipse 52px 37px at 48% 85%,
+        transparent 35%,
+        rgba(0, 0, 0, 0.25) 55%,
+        transparent 72%),
+      /* 坑 3 内阴影 */
+      radial-gradient(ellipse 37px 29px at 75% 72%,
+        transparent 30%,
+        rgba(0, 0, 0, 0.28) 55%,
+        transparent 70%);
+  }
+
+  /* 噪点纹理 - 增加真实感 */
+  .noise {
+    position: absolute;
+    inset: 0;
+    opacity: 0.03;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-size: 100px 100px;
+  }
+
+  /* ===== 代码符号 ===== */
+  .symbol {
+    position: absolute;
+    top: 52%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #ffffff;
+    font-weight: 500;
+    line-height: 1;
+    z-index: 10;
+    /* 微妙的文字阴影增加立体感 */
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+  }
+
+  /* 版本一：<> */
+  .v1 .symbol {
+    font-size: 78px;
+    font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+    letter-spacing: -4px;
+    font-weight: 400;
+  }
+
+  /* 版本二：{} */
+  .v2 .symbol {
+    font-size: 88px;
+    font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+    font-weight: 400;
+  }
+
+  /* 版本三：</> */
+  .v3 .symbol {
+    font-size: 58px;
+    font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+    letter-spacing: -2px;
+    font-weight: 400;
+  }
+
+  /* 版本四：K + <> */
+  .v4 .symbol {
+    font-size: 72px;
+    font-weight: 600;
+    font-family: -apple-system, 'SF Pro Display', sans-serif;
+  }
+  .v4 .code-mini {
+    font-size: 22px;
+    font-family: 'SF Mono', monospace;
+    color: #8bb4f7;
+    position: absolute;
+    right: -8px;
+    top: -6px;
+    font-weight: 400;
+    text-shadow: 0 0 10px rgba(139, 180, 247, 0.25);
+  }
+
+  /* ===== 小尺寸预览（模拟 Dock 栏） ===== */
+  .dock-preview {
+    display: flex;
+    gap: 20px;
+    align-items: flex-end;
+    margin-top: 30px;
+    padding: 20px 40px;
+    background: rgba(255,255,255,0.03);
+    border-radius: 20px;
+  }
+  .dock-icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 15px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+  }
+  .dock-icon .icon-bg { background: #060508; }
+  .dock-icon .icon-glow { opacity: 0.7; }
+  .dock-icon .moon-surface { height: 45%; }
+  .dock-icon .craters { height: 45%; }
+  .dock-icon .crater-shadows { height: 45%; }
+  .dock-icon .noise { opacity: 0.02; }
+  .dock-icon .symbol {
+    font-size: 26px !important;
+    top: 52%;
+  }
+  .dock-icon.v1 .symbol { letter-spacing: -1px; }
+  .dock-icon.v2 .symbol { font-size: 30px !important; }
+  .dock-icon.v3 .symbol { font-size: 20px !important; letter-spacing: -1px; }
+  .dock-icon.v4 .symbol { font-size: 28px !important; }
+  .dock-icon.v4 .code-mini { font-size: 9px; right: -2px; top: -2px; }
+
+  .footer {
+    color: #444;
+    font-size: 11px;
+    margin-top: 20px;
+    text-align: center;
+    line-height: 1.8;
+  }
+
+  @media (max-width: 768px) {
+    .grid { grid-template-columns: repeat(2, 1fr); gap: 30px; }
+    .icon-kimi { width: 140px; height: 140px; border-radius: 32px; }
+    .dock-preview { flex-wrap: wrap; justify-content: center; }
+  }
+</style>
+</head>
+<body>
+
+<h1>Kimi Code 图标 - 精确复刻版</h1>
+
+<div class="grid">
+
+  <!-- 版本一：<> -->
+  <div class="icon-card">
+    <div class="icon-kimi v1">
+      <div class="icon-bg"></div>
+      <div class="icon-glow"></div>
+      <div class="moon-surface"></div>
+      <div class="craters"></div>
+      <div class="crater-shadows"></div>
+      <div class="noise"></div>
+      <div class="symbol">&lt;&gt;</div>
+    </div>
+    <div class="icon-label">&lt;&gt;</div>
+  </div>
+
+  <!-- 版本二：{} -->
+  <div class="icon-card">
+    <div class="icon-kimi v2">
+      <div class="icon-bg"></div>
+      <div class="icon-glow"></div>
+      <div class="moon-surface"></div>
+      <div class="craters"></div>
+      <div class="crater-shadows"></div>
+      <div class="noise"></div>
+      <div class="symbol">{}</div>
+    </div>
+    <div class="icon-label">{}</div>
+  </div>
+
+  <!-- 版本三：</> -->
+  <div class="icon-card">
+    <div class="icon-kimi v3">
+      <div class="icon-bg"></div>
+      <div class="icon-glow"></div>
+      <div class="moon-surface"></div>
+      <div class="craters"></div>
+      <div class="crater-shadows"></div>
+      <div class="noise"></div>
+      <div class="symbol">&lt;/&gt;</div>
+    </div>
+    <div class="icon-label">&lt;/&gt;</div>
+  </div>
+
+  <!-- 版本四：K<> -->
+  <div class="icon-card">
+    <div class="icon-kimi v4">
+      <div class="icon-bg"></div>
+      <div class="icon-glow"></div>
+      <div class="moon-surface"></div>
+      <div class="craters"></div>
+      <div class="crater-shadows"></div>
+      <div class="noise"></div>
+      <div class="symbol">K<span class="code-mini">&lt;&gt;</span></div>
+    </div>
+    <div class="icon-label">K&lt;&gt;</div>
+  </div>
+
+</div>
+
+<!-- Dock 栏预览 -->
+<div style="margin-top: 40px; text-align: center;">
+  <div style="color: #666; font-size: 12px; margin-bottom: 16px; letter-spacing: 1px;">macOS Dock 栏预览</div>
+  <div class="dock-preview">
+    <div class="dock-icon v1">
+      <div class="icon-bg"></div>
+      <div class="icon-glow"></div>
+      <div class="moon-surface"></div>
+      <div class="craters"></div>
+      <div class="crater-shadows"></div>
+      <div class="noise"></div>
+      <div class="symbol">&lt;&gt;</div>
+    </div>
+    <div class="dock-icon v2">
+      <div class="icon-bg"></div>
+      <div class="icon-glow"></div>
+      <div class="moon-surface"></div>
+      <div class="craters"></div>
+      <div class="crater-shadows"></div>
+      <div class="noise"></div>
+      <div class="symbol">{}</div>
+    </div>
+    <div class="dock-icon v3">
+      <div class="icon-bg"></div>
+      <div class="icon-glow"></div>
+      <div class="moon-surface"></div>
+      <div class="craters"></div>
+      <div class="crater-shadows"></div>
+      <div class="noise"></div>
+      <div class="symbol">&lt;/&gt;</div>
+    </div>
+    <div class="dock-icon v4">
+      <div class="icon-bg"></div>
+      <div class="icon-glow"></div>
+      <div class="moon-surface"></div>
+      <div class="craters"></div>
+      <div class="crater-shadows"></div>
+      <div class="noise"></div>
+      <div class="symbol">K<span class="code-mini">&lt;&gt;</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  基于 Kimi App 图标像素级分析复刻 · 方形圆角 · 极深背景 · 底部月球陨石坑纹理<br>
+  主符号替换为代码元素 · 支持导出为 PNG 用于桌面端应用
+</div>
+
+</body>
+</html>
