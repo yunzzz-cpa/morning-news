@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>早报 - 2026年08月28日</title>
+    <script>
+        try {
+            const saved = localStorage.getItem('morning-brief-theme');
+            if (saved) document.documentElement.dataset.theme = saved;
+        } catch (e) {}
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #f7f7f5;
+            --bg-warm: #f0efeb;
+            --surface: #ffffff;
+            --surface-hover: #fafaf8;
+            --text-primary: #1a1a1a;
+            --text-secondary: #6b6b6b;
+            --text-muted: #a0a0a0;
+            --border: #e8e8e6;
+            --border-light: #f0f0ee;
+            --accent: #2563eb;
+            --accent-soft: #3b82f6;
+            --accent-bg: #eff6ff;
+            --politics: #c2410c;
+            --politics-bg: #fff7ed;
+            --stock: #059669;
+            --stock-bg: #ecfdf5;
+            --ai: #7c3aed;
+            --ai-bg: #f5f3ff;
+            --shadow-sm: 0 1px 2px rgba(0,0,0,0.04);
+            --shadow-md: 0 4px 12px rgba(0,0,0,0.05);
+            --shadow-lg: 0 8px 24px rgba(0,0,0,0.06);
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+            --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            --nav-bg: rgba(247, 247, 245, 0.92);
+        }
+        [data-theme="dark"] {
+            --bg: #0c0c14;
+            --bg-warm: #12121c;
+            --surface: #17171f;
+            --surface-hover: #1d1d28;
+            --text-primary: #f0f2f5;
+            --text-secondary: #9aa0b0;
+            --text-muted: #5a6072;
+            --border: #26262f;
+            --border-light: #1e1e28;
+            --accent: #4d9fff;
+            --accent-soft: #6bb0ff;
+            --accent-bg: rgba(77, 159, 255, 0.14);
+            --politics: #f0804d;
+            --politics-bg: rgba(240, 128, 77, 0.14);
+            --stock: #34d399;
+            --stock-bg: rgba(52, 211, 153, 0.14);
+            --ai: #a78bfa;
+            --ai-bg: rgba(167, 139, 250, 0.14);
+            --shadow-sm: 0 1px 2px rgba(0,0,0,0.3);
+            --shadow-md: 0 4px 12px rgba(0,0,0,0.35);
+            --shadow-lg: 0 8px 24px rgba(0,0,0,0.4);
+            --nav-bg: rgba(12, 12, 20, 0.92);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', 'Noto Sans SC', -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text-primary);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+            min-height: 100vh;
+            overflow-x: hidden;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .nav-bar {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: var(--nav-bg);
+            backdrop-filter: blur(16px) saturate(1.8);
+            border-bottom: 1px solid var(--border);
+            padding: 14px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+        }
+        .nav-brand {
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--text-primary);
+            white-space: nowrap;
+            letter-spacing: -0.3px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .nav-brand::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--accent);
+            display: inline-block;
+        }
+        .nav-filters {
+            display: flex;
+            gap: 6px;
+            overflow-x: auto;
+            scrollbar-width: none;
+            -webkit-overflow-scrolling: touch;
+        }
+        .nav-filters::-webkit-scrollbar { display: none; }
+        .filter-btn {
+            padding: 6px 14px;
+            border-radius: 100px;
+            border: 1px solid var(--border);
+            background: var(--surface);
+            color: var(--text-secondary);
+            font-size: 13px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            white-space: nowrap;
+            font-family: inherit;
+        }
+        .filter-btn:hover {
+            border-color: var(--text-muted);
+            color: var(--text-primary);
+            background: var(--surface-hover);
+        }
+        .filter-btn.active {
+            background: var(--text-primary);
+            border-color: var(--text-primary);
+            color: var(--surface);
+        }
+        .nav-actions {
+            display: flex;
+            gap: 8px;
+        }
+        .nav-btn {
+            width: 34px;
+            height: 34px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            background: var(--surface);
+            color: var(--text-secondary);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            font-size: 14px;
+        }
+        .nav-btn:hover {
+            border-color: var(--text-muted);
+            color: var(--text-primary);
+            background: var(--surface-hover);
+        }
+        .header {
+            position: relative;
+            z-index: 10;
+            padding: 56px 24px 40px;
+            text-align: center;
+            max-width: 680px;
+            margin: 0 auto;
+        }
+        .header-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 14px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            color: var(--text-secondary);
+            border-radius: 100px;
+            font-size: 12px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            margin-bottom: 20px;
+        }
+        .header h1 {
+            font-size: 40px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+            letter-spacing: -1.5px;
+            line-height: 1.2;
+        }
+        .header-date {
+            font-size: 14px;
+            color: var(--text-muted);
+            font-weight: 400;
+        }
+        .header-stats {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 28px;
+            padding-top: 28px;
+            border-top: 1px solid var(--border);
+        }
+        .stat-item {
+            text-align: center;
+        }
+        .stat-num {
+            font-size: 22px;
+            font-weight: 600;
+            color: var(--text-primary);
+            letter-spacing: -0.5px;
+        }
+        .stat-label {
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-top: 2px;
+            font-weight: 400;
+        }
+        .container {
+            position: relative;
+            z-index: 10;
+            max-width: 680px;
+            margin: 0 auto;
+            padding: 0 24px 80px;
+        }
+        .section {
+            margin-bottom: 48px;
+            animation: fadeInUp 0.7s ease forwards;
+            opacity: 0;
+        }
+        .section:nth-child(1) { animation-delay: 0.1s; }
+        .section:nth-child(2) { animation-delay: 0.25s; }
+        .section:nth-child(3) { animation-delay: 0.4s; }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(16px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+            padding: 0 2px;
+        }
+        .section-icon-wrap {
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+        }
+        .section-icon-wrap.ai { background: var(--ai-bg); border-color: #ddd6fe; }
+        .section-icon-wrap.politics { background: var(--politics-bg); border-color: #fed7aa; }
+        .section-icon-wrap.stock { background: var(--stock-bg); border-color: #a7f3d0; }
+        .section-title-group { flex: 1; }
+        .section-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text-primary);
+            letter-spacing: -0.2px;
+        }
+        .section-subtitle {
+            font-size: 12px;
+            color: var(--text-muted);
+            font-weight: 400;
+            margin-top: 1px;
+        }
+        .section-line {
+            flex: 1;
+            height: 1px;
+            background: var(--border);
+            margin-left: 8px;
+            max-width: 120px;
+        }
+        .news-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .news-card {
+            position: relative;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: 22px;
+            transition: var(--transition);
+            overflow: hidden;
+            cursor: pointer;
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .news-card::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: radial-gradient(circle, var(--accent-soft) 0%, transparent 70%);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0;
+            pointer-events: none;
+            transition: none;
+        }
+        .news-card.animating::after {
+            animation: ripple 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        @keyframes ripple {
+            0% { width: 0; height: 0; opacity: 0.25; }
+            100% { width: 600px; height: 600px; opacity: 0; }
+        }
+        .news-card:active {
+            transform: scale(0.985);
+            transition: transform 0.12s ease;
+        }
+        .news-card:hover {
+            transform: translateY(-1px);
+            border-color: var(--border-light);
+            box-shadow: var(--shadow-md);
+        }
+        .news-card.hidden { display: none; }
+        .news-card.collapsed .news-summary { 
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        .news-card.collapsed .collapse-btn svg { transform: rotate(180deg); }
+        .news-card-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+        .news-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 11px;
+            font-weight: 600;
+            padding: 3px 10px;
+            border-radius: 100px;
+            letter-spacing: 0.3px;
+        }
+        .news-tag.ai {
+            background: var(--ai-bg);
+            color: var(--ai);
+        }
+        .news-tag.politics {
+            background: var(--politics-bg);
+            color: var(--politics);
+        }
+        .news-tag.stock {
+            background: var(--stock-bg);
+            color: var(--stock);
+        }
+        .news-time {
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-left: auto;
+            font-weight: 400;
+        }
+        .news-title {
+            font-size: 16px;
+            font-weight: 600;
+            line-height: 1.5;
+            margin-bottom: 8px;
+            color: var(--text-primary);
+            letter-spacing: -0.2px;
+        }
+        .news-summary {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.75;
+            margin-bottom: 14px;
+            transition: var(--transition);
+        }
+        .news-actions {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .news-source {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 12px;
+            color: var(--text-muted);
+            text-decoration: none;
+            padding: 6px 12px;
+            border-radius: 6px;
+            background: var(--bg);
+            border: 1px solid var(--border);
+            transition: var(--transition);
+            font-weight: 500;
+        }
+        .news-source:hover {
+            background: var(--surface-hover);
+            border-color: var(--text-muted);
+            color: var(--text-secondary);
+        }
+        .news-source svg {
+            transition: transform 0.2s;
+        }
+        .news-source:hover svg {
+            transform: translate(1px, -1px);
+        }
+        .collapse-btn {
+            margin-left: auto;
+            padding: 4px 10px;
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            cursor: pointer;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            transition: var(--transition);
+            font-family: inherit;
+            font-weight: 500;
+            border-radius: 6px;
+        }
+        .collapse-btn:hover { 
+            color: var(--text-secondary); 
+            background: var(--bg);
+        }
+        .collapse-btn svg { transition: transform 0.3s; }
+        .back-to-top {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            color: var(--text-secondary);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transform: translateY(12px);
+            transition: var(--transition);
+            z-index: 100;
+            font-size: 16px;
+            box-shadow: var(--shadow-md);
+        }
+        .back-to-top.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .back-to-top:hover {
+            background: var(--text-primary);
+            border-color: var(--text-primary);
+            color: var(--surface);
+            transform: translateY(-2px);
+        }
+        .footer {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            padding: 40px 24px;
+            border-top: 1px solid var(--border);
+            background: var(--bg-warm);
+        }
+        .footer-brand {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-secondary);
+            margin-bottom: 6px;
+            letter-spacing: -0.2px;
+        }
+        .footer-brand span {
+            color: var(--text-primary);
+            font-weight: 700;
+        }
+        .footer-note {
+            font-size: 12px;
+            color: var(--text-muted);
+            font-weight: 400;
+        }
+        ::-webkit-scrollbar { width: 5px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--text-muted); }
+        @media (max-width: 480px) {
+            .header { padding: 40px 20px 32px; }
+            .header h1 { font-size: 32px; }
+            .header-stats { gap: 28px; margin-top: 24px; padding-top: 24px; }
+            .stat-num { font-size: 20px; }
+            .container { padding: 0 20px 60px; }
+            .news-card { padding: 18px; border-radius: var(--radius-sm); }
+            .nav-bar { padding: 12px 16px; }
+            .section { margin-bottom: 36px; }
+        }
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            z-index: 0;
+            pointer-events: none;
+            opacity: 0.4;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            background-size: 180px 180px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav-bar">
+        <div class="nav-brand">早报</div>
+        <div class="nav-filters">
+            <button class="filter-btn active" data-filter="all">全部</button>
+            <button class="filter-btn" data-filter="ai">AI</button>
+            <button class="filter-btn" data-filter="politics">时政</button>
+            <button class="filter-btn" data-filter="stock">股市</button>
+        </div>
+        <div class="nav-actions">
+            <button class="nav-btn" id="themeToggle" title="切换主题">☀</button>
+        </div>
+    </nav>
+
+    <header class="header">
+        <div class="header-badge">
+            <span>Morning Brief</span>
+        </div>
+        <h1>早报</h1>
+        <div class="header-date">2026年08月28日 · 星期五</div>
+        <div class="header-stats">
+            <div class="stat-item">
+                <div class="stat-num">15</div>
+                <div class="stat-label">条新闻</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-num">3</div>
+                <div class="stat-label">个领域</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-num">8:17</div>
+                <div class="stat-label">每日更新</div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container" id="newsContainer">
+        <!-- AI Section -->
+        <section class="section" data-category="ai">
+            <div class="section-header">
+                <div class="section-icon-wrap ai"><span>🤖</span></div>
+                <div class="section-title-group">
+                    <div class="section-title">人工智能</div>
+                    <div class="section-subtitle">Artificial Intelligence</div>
+                </div>
+                <div class="section-line"></div>
+            </div>
+            <div class="news-list">
+                <article class="news-card ai collapsed" data-category="ai">
+                    <div class="news-card-header">
+                        <span class="news-tag ai">大模型</span>
+                        <span class="news-time">08月27日</span>
+                    </div>
+                    <h3 class="news-title">MiniMax ARR暴涨500%，token消耗暴涨2000%</h3>
+                    <p class="news-summary">MiniMax最新财报显示，公司年化经常性收入（ARR）同比增长500%，token消耗量更是暴涨2000%。这一数据被视为Agent红利释放的典型信号，表明大模型商业化正从概念验证阶段快速进入规模化变现期。MiniMax在C端和B端的双重发力策略正在显现成效。</p>
+                    <div class="news-actions">
+                        <a href="https://www.qbitai.com/" class="news-source" target="_blank">
+                            <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                            量子位
+                        </a>
+                        <button class="collapse-btn" onclick="toggleCollapse(this)">
+                            展开 <svg width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                        </button>
+                    </div>
+                </article>
+
+                <article class="news-card ai collapsed" data-category="ai">
+                    <div class="news-card-header">
+                        <span class="news-tag ai">大模型</span>
+                        <span class="news-time">08月26日</span>
+                    </div>
+                    <h3 class="news-title">千问办公首发上线Qwen3.8-Flash，生成速度翻倍</h3>
+                    <p class="news-summary">8月26日晚，千问办公首发上线刚刚发布的Qwen3.8-Flash模型，同时推出标准模式。新模型生成速度提升100%，Token消耗减少75%，在办公场景下的性价比优势显著。这是阿里通义千问系列在效率优化方向上的重要迭代，有望进一步降低企业使用大模型的门槛。</p>
+                    <div class="news-actions">
+                        <a href="https://www.qbitai.com/" class="news-source" target="_blank">
+                            <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                            量子位
+                        </a>
+                        <button class="collapse-btn" onclick="toggleCollapse(this)">
+                            展开 <svg width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                        </button>
+                    </div>
+                </article>
+
+                <article class="news-card ai collapsed" data-category="ai">
+                    <div class="news-card-header">
+                        <span class="news-tag ai">融资</span>
+                        <span class="news-time">08月27日</span>
+                    </div>
+                    <h3 class="news-title">基元律动融资数千万美元，推出"中国版OpenRouter"</h3>
+                    <p class="news-summary">AI基础设施公司基元律动（TokenRhythm）宣布完成新一轮融资，融资额达数千万美元。公司定位为"中国版OpenRouter"，致力于提供统一的大模型API路由和调用服务，帮助开发者以更低的成本、更灵活的方式接入国内外各类大模型。该领域竞争日趋激烈，基元律动的差异化路径值得关注。</p>
+                    <div class="news-actions">
+                        <a href="https://www.qbitai.com/" class="news-source" target="_blank">
+                            <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                            量子位
+                        </a>
+                        <button class="collapse-btn" onclick="toggleCollapse(this)">
+                            展开 <svg width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                        </button>
+                    </div>
+                </article>
+
+                <article class="news-card ai collapsed" data-category="ai">
+                    <div class="news-card-header">
+                        <span class="news-tag ai">行业应用</span>
+                        <span class="news-time">08月27日</span>
+                    </div>
+                    <h3 class="news-title">工业Agent不是"套壳"大模型！西门子百年经验灌进工业AI</h3>
+                    <p class="news-summary">西门子将百年工业经验沉淀进Xcelerator平台，推出的工业Agent强调与普通软件货架的本质区别。工业AI的核心不在于模型参数，而在于对真实工业场景的深刻理解。西门子的实践表明，工业Agent要解决的是"让产品在真实工业场景中持续生长"，而非简单的模型调用。这一思路为国内工业AI发展提供了重要参考。</p>
+                    <div class="news-actions">
+                        <a href="https://www.qbitai.com/" class="news-source" target="_blank">
+                            <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                            量子位
+                        </a>
+                        <button class="collapse-btn" onclick="toggleCollapse(this)">
+                            展开 <svg width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                        </button>
+                    </div>
+                </article>
+
+                <article class="news-card ai collapsed" data-category="ai">
+                    <div class="news-card-header">
+                        <span class="news-tag ai">具身智能</span>
+                        <span class="news-time">08月27日</span>
+                    </div>
+                    <h3 class="news-title">范式联合优必选等十余家具身巨头发布PhanthyMotus新计划</h3>
+                    <p class="news-summary">范式正式举办PhanthyMotus生态社区共建计划发布会，宣布其首个通用具身Agent底座从"开源"迈入"多方共建"新阶段。优必选等十余家具身智能头部企业参与共建。这标志着具身智能领域正从单点突破走向生态协作，产业竞争格局正在发生深刻变化。</p>
+                    <div class="news-actions">
+                        <a href="https://www.qbitai.com/" class="news-source" target="_blank">
+                            <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                            量子位
+                        </a>
+                        <button class="collapse-btn" onclick="toggleCollapse(this)">
+                            展开 <svg width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                        </button>
+                    </div>
+                </article>
+
+                <article class="news-card ai collapsed" data-category="ai">
+                    <div class="news-card-header">
+                        <span class="news-tag ai">AI应用</span>
+                        <span class="news-time">08月27日</span>
+                    </div>
+                    <h3 class="news-title">蚂蚁国际发布自研时序AI预测大模型"鹰序TST"2.0版</h3>
+                    <p class="news-summary">蚂蚁国际正式发布自研时序AI预测大模型"鹰序TST"2.0版，该模型在世界权威测评中获第一名。鹰序TST 2.0推动时间序列基础模型从通用预测走向金融应用，为供应链物流、金融风控等场景提供更精准的时间序列预测能力。这代表了AI在垂直领域深度应用的新趋势。</p>
+                    <div class="news-actions">
+                        <a href="https://www.qbitai.com/" class="news-source" target="_blank">
+                            <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                            量子位
+                        </a>
+                        <button class="collapse-btn" onclick="toggleCollapse(this)">
+                            展开 <svg width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                        </button>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- Politics Section -->
+        <section class="section" data-category="politics">
+            <div class="section-header">
+                <div class="section-icon-wrap politics"><span>🏛️</span></div>
+                <div class="section-title-group">
+                    <div class="section-title">国内时政</div>
+                    <div class="section-subtitle">Politics & Policy</div>
+                </div>
+                <div class="section-line"></div>
+            </div>
+            <div class="news-list">
+                <article class="news-card politics collapsed" data-category="politics">
+                    <div class="news-card-header">
+                        <span class="news-tag politics">贸易摩擦</span>
+                        <span class="news-time">08月28日</span>
+                    </div>
+                    <h3 class="news-title">商务部回应：美拟对华商品额外加征7.5%关税</h3>
+                    <p class="news-summary">8月27日商务部举行例行新闻发布会，发言人黄玲就美国政府考虑对自中国进口商品额外加征7.5%关税一事表示，中方对此坚决反对，将继续密切关注并全面评估美方后续举措，并保留采取一切必要措施的权利。近期中美贸易摩擦持续升级，市场需关注后续政策走向。</p>
+                    <div class="news-actions">
+                        <a href="https://www.cls.cn/telegraph" class="news-source" target="_blank">
+                            <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                            财联社
+                        </a>
+                        <button class="collapse-btn" onclick="toggleCollapse(this)">
+                            展开 <svg width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                        </button>
+                    </div>
+                </article>
+
+                <article class="news-card politics collapsed" data-category="politics">
+                    <div class="news-card-header">
+                        <span class="news-tag politics">国际博弈</span>
+                        <span class="news-time">08月28日</span>
+                    </div>
+                    <h3 class="news-title">特朗普签署行政令：宣布美国电网外国设备"国家紧急状态"</h3>
+                    <p class="news-summary">当地时间8月26日，美国总统特朗普签署第14420号行政命令，宣布美国"主电力系统和变电站中使用的来自外国对手国家"的电力设备构成"国家紧急状态"。多家中国电力设备上市公司已对此作出回应。这是美国对中国电力设备管制的再度升级，相关出口企业需密切关注政策影响。</p>
+                    <div class="news-actions">
+                        <a href="https://www.cls.cn/telegraph" class="news-source" target="_blank">
+                            <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                            财联社
+                        </a>
+                        <button class="collapse-btn" onclick="toggleCollapse(this)">
+                            展开 <svg width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                        </button>
+                    </div>
+                </article>
+
+                <article class="news-card politics collapsed" data-category="politics">
+                    <div class="news-card-header">
+                        <span class="news-tag politics">宏观经济</span>
+                        <span class="news-time">08月28日</span>
+                    </div>
+                    <h3 class="news-title">2025年经济发展新动能指数比上年提升12.5%</h3>
+                    <p class="news-summary">经济发展新动能指数最新测算结果显示，2025年我国经济发展新动能继续培育壮大，经济发展活力释放，创新驱动发展引领作用彰显，网络经济保持较快增长，转型升级步伐加快。新动能指数的提升表明我国经济正在加速向创新驱动和数字化转型，高质量发展的基础进一步夯实。</p>
+                    <div class="news-actions">
+                        <a href="https://www.cnfin.com/macro/" class="news-source" target="_blank">
+                            <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                            中国金融信息网
+                        </a>
+                        <button class="collapse-btn" onclick="toggleCollapse(this)">
+                            展开 <svg width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                        </button>
+                    </div>
+                </article>
+
+                <article class="news-card politics collapsed" data-category="politics">
+                    <div class="news-card-header">
+                        <span class="news-tag politics">房地产</span>
+                        <span class="news-time">08月28日</span>
+                    </div>
+                    <h3 class="news-title">精准降低购房成本，年内超20城落地房贷贴息政策</h3>
+                    <p class="news-summary">据不完全统计，全国已有超20地出台或优化住房贷款贴息相关政策。住房贷款贴息正成为地方精细化支持住房消费的重要政策工具，政策覆盖范围持续拓宽，补贴对象也更加精准多元。在当前房地产市场调整期，此类定向支持政策有助于降低居民购房成本，稳定住房消费预期。</p>
+                    <div class="news-actions">
+                        <a href="https://www.cnfin.com/macro/" class="news-source" target="_blank">
+                            <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                            中国金融信息网
+                        </a>
+                        <button class="collapse-btn" onclick="toggleCollapse(this)">
+                            展开 <svg width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                        </button>
+                    </div>
+                </article>
+
+                <article class="news-card politics collapsed" data-category="politics">
+                    <div class="news-card-header">
+                        <span class="news-tag politics">基础设施</span>
+                        <span class="news-time">08月27日</span>
+                    </div>
+                    <h3 class="news-title">新疆建成全国规模最大超高压电力骨干网</h3>
+                    <p class="news-summary">从国家电网了解到，截至8月27日，新疆750千伏超高压输电线路总长度超过15000千米，建成全国规模最大的超高压电力骨干网。新疆作为我国重要的能源基地，超高压电网的完善将大幅提升"西电东送"能力，对保障全国能源安全、促进清洁能源消纳具有重要意义。</p>
+                    <div class="news-actions">
+                        <a href="https://www.cls.cn/telegraph" class="news-source" target="_blank">
+                            <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                            财联社
+                        </a>
+                        <button class="collapse-btn" onclick="toggleCollapse(this)">
+                            展开 <svg width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                        </button>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- Stock Section -->
+        <section class="section" data-category="stock">
+            <div class="section-header">
+                <div class="section-icon-wrap stock"><span>📈</span></div>
+                <div class="section-title-group">
+                    <div class="section-title">股市投资</div>
+                    <div class="section-subtitle">Stock Market</div>
+                </div>
+                <div class="section-line"></div>
+            </div>
+            <div class="news-list">
+                <article class="news-card stock collapsed" data-category="stock">
+                    <div class="news-card-header">
+                        <span class="news-tag stock">A股行情</span>
+                        <span class="news-time">08月27日</span>
+                    </div>
+                    <h3 class="news-title">A股全线收涨，科创50指数大涨近4%，半导体板块爆发</h3>
+                    <p class="news-summary">8月27日，A股三大指数集体收涨。沪指涨1.13%报3956点，深证成指涨1.50%，创业板指涨1.71%，科创50指数大涨3.77%。两市成交额超2.1万亿元，较上个交易日放量3172亿元。电子化学品、元件、半导体、稀土、非金属材料、通信设备板块涨幅居前，半导体板块上涨5.04%。大盘主力资金净流入537.72亿元，市场做多情绪明显回暖。</p>
+                    <div class="news-actions">
+                        <a href="https://stock.eastmoney.com/" class="news-source" target="_blank">
+                            <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                            东方财富
+                        </a>
+                        <button class="collapse-btn" onclick="toggleCollapse(this)">
+                            展开 <svg width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                        </button>
+                    </div>
+                </article>
+
+                <article class="news-card stock collapsed" data-category="stock">
+                    <div class="news-card-header">
+                        <span class="news-tag stock">业绩数据</span>
+                        <span class="news-time">08月27日</span>
+                    </div>
+                    <h3 class="news-title">统计局：1-7月工业企业利润增长17.6%，集成电路行业利润暴增18.5倍</h3>
+                    <p class="news-summary">国家统计局8月27日发布数据显示，1-7月全国规模以上工业企业实现利润总额45820.6亿元，同比增长17.6%，延续今年以来较快增长态势。其中，集成电路行业利润同比增长18.5倍，表现最为亮眼。这一数据印证了半导体行业的高景气度，也为近期半导体板块的强势表现提供了基本面支撑。</p>
+                    <div class="news-actions">
+                        <a href="https://www.stats.gov.cn/" class="news-source" target="_blank">
+                            <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                            国家统计局
+                        </a>
+                        <button class="collapse-btn" onclick="toggleCollapse(this)">
+                            展开 <svg width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                        </button>
+                    </div>
+                </article>
+
+                <article class="news-card stock collapsed" data-category="stock">
+                    <div class="news-card-header">
+                        <span class="news-tag stock">美股动态</span>
+                        <span class="news-time">08月27日</span>
+                    </div>
+                    <h3 class="news-title">英伟达财报全面超预期，股价暴涨8.7%，市值一夜增加约2.97万亿元</h3>
+                    <p class="news-summary">当地时间8月27日，美股三大指数集体收涨，纳指涨1.57%。英伟达暴涨8.74%，市值增加约4420亿美元（约合人民币2.97万亿元）。英伟达第二财季营收同比增长106%，公司预计2028财年营收增长将达到70%，远高于分析师预期的44%。英伟达对PTFE（聚四氟乙烯）的力捧也带动了A股相关概念集体爆发。</p>
+                    <div class="news-actions">
+                        <a href="https://stock.eastmoney.com/" class="news-source" target="_blank">
+                            <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                            东方财富
+                        </a>
+                        <button class="collapse-btn" onclick="toggleCollapse(this)">
+                            展开 <svg width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                        </button>
+                    </div>
+                </article>
+
+                <article class="news-card stock collapsed" data-category="stock">
+                    <div class="news-card-header">
+                        <span class="news-tag stock">券商重组</span>
+                        <span class="news-time">08月27日</span>
+                    </div>
+                    <h3 class="news-title">中金公司"三合一"重组获上交所审核通过</h3>
+                    <p class="news-summary">8月27日晚，中金公司公告称，公司换股吸收合并东兴证券、信达证券事项已获得上海证券交易所并购重组审核委员会审核通过。这是券商行业并购重组的又一标志性事件，若最终获批实施，将诞生一家规模更大的综合性投行。近期券商板块多次异动，市场对行业整合预期升温。</p>
+                    <div class="news-actions">
+                        <a href="https://stock.eastmoney.com/" class="news-source" target="_blank">
+                            <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                            东方财富
+                        </a>
+                        <button class="collapse-btn" onclick="toggleCollapse(this)">
+                            展开 <svg width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                        </button>
+                    </div>
+                </article>
+
+                <article class="news-card stock collapsed" data-category="stock">
+                    <div class="news-card-header">
+                        <span class="news-tag stock">行业动态</span>
+                        <span class="news-time">08月28日</span>
+                    </div>
+                    <h3 class="news-title">存储三巨头产能售罄，摩根大通预测短缺将延续至2027年</h3>
+                    <p class="news-summary">摩根大通在最新研报中指出，AI需求推动存储芯片价格和出货量同步增长，供需短缺未来两年仍将持续，2027年可能进一步恶化。AI算力设施扩张带动HBM、光通信、液冷等相关需求高增，光通信板块和液冷服务器板块已步入业绩兑现期。华创证券指出，液冷在提升散热效率方面的优势明显，31只液冷概念股今明两年净利增速有望超30%。</p>
+                    <div class="news-actions">
+                        <a href="https://www.cls.cn/telegraph" class="news-source" target="_blank">
+                            <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                            财联社
+                        </a>
+                        <button class="collapse-btn" onclick="toggleCollapse(this)">
+                            展开 <svg width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                        </button>
+                    </div>
+                </article>
+
+                <article class="news-card stock collapsed" data-category="stock">
+                    <div class="news-card-header">
+                        <span class="news-tag stock">新股申购</span>
+                        <span class="news-time">08月28日</span>
+                    </div>
+                    <h3 class="news-title">今日新股：电科思仪申购，华大海天上市</h3>
+                    <p class="news-summary">8月28日，共有1只新股申购，为创业板电科思仪（301689）；1只新股上市，为北交所的华大海天（920288）。值得注意的是，电科思仪本次公开发行股票数量为1.02亿股，在今年以来的创业板新股中排名第3，中签率可能较高。此外，A股分红派息方面，东阿阿胶、传音控股等4股今日股权登记。</p>
+                    <div class="news-actions">
+                        <a href="https://www.cls.cn/telegraph" class="news-source" target="_blank">
+                            <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                            财联社
+                        </a>
+                        <button class="collapse-btn" onclick="toggleCollapse(this)">
+                            展开 <svg width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                        </button>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-brand">早报 <span>Morning Brief</span></div>
+        <div class="footer-note">由 OpenClaw 自动生成 · 数据来源网络公开信息</div>
+    </footer>
+
+    <button class="back-to-top" id="backToTop" onclick="scrollToTop()">↑</button>
+
+    <script>
+        document.querySelectorAll('.news-card').forEach(card => {
+            card.addEventListener('click', (e) => {
+                if (e.target.closest('.news-source') || e.target.closest('.collapse-btn')) return;
+                card.classList.remove('animating');
+                void card.offsetWidth;
+                card.classList.add('animating');
+                setTimeout(() => card.classList.remove('animating'), 600);
+            });
+        });
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                const filter = btn.dataset.filter;
+                document.querySelectorAll('.news-card').forEach(card => {
+                    if (filter === 'all' || card.dataset.category === filter) {
+                        card.classList.remove('hidden');
+                    } else {
+                        card.classList.add('hidden');
+                    }
+                });
+                document.querySelectorAll('.section').forEach(section => {
+                    const visibleCards = section.querySelectorAll('.news-card:not(.hidden)');
+                    section.style.display = visibleCards.length > 0 ? 'block' : 'none';
+                });
+            });
+        });
+        function toggleCollapse(btn) {
+            const card = btn.closest('.news-card');
+            card.classList.toggle('collapsed');
+            btn.innerHTML = card.classList.contains('collapsed') 
+                ? '展开 <svg width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>'
+                : '收起 <svg width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"/></svg>';
+        }
+        const backToTop = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => {
+            backToTop.classList.toggle('visible', window.scrollY > 300);
+        });
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        const themeToggle = document.getElementById('themeToggle');
+        function applyTheme(theme) {
+            document.documentElement.dataset.theme = theme;
+            themeToggle.textContent = theme === 'dark' ? '☾' : '☀';
+            try { localStorage.setItem('morning-brief-theme', theme); } catch (e) {}
+        }
+        themeToggle.addEventListener('click', () => {
+            applyTheme(document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark');
+        });
+        if (document.documentElement.dataset.theme === 'dark') themeToggle.textContent = '☾';
+    </script>
+</body>
+</html>
